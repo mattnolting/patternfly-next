@@ -5,8 +5,6 @@ beta: true
 cssPrefix: pf-c-drawer
 ---
 
-import './Drawer.css'
-
 ## Examples
 
 ```hbs title=Closed-panel-on-right-(default)
