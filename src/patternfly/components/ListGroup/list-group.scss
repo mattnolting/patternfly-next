@@ -5,17 +5,17 @@ $pf-c-list-group--breakpoint-map: build-breakpoint-map("base", "md", "lg", "xl",
   --pf-c-list-group--ColumnGap: var(--pf-global--spacer--xs);
   --pf-c-list-group--GridGap: var(--pf-global--spacer--md);
 
+  // Nested list group
+  --pf-c-list-group--c-list-group--MarginTop: var(--pf-c-list-group--RowGap);
+  --pf-c-list-group--c-list-group--MarginRight: var(--pf-c-list-group--ColumnGap);
+  --pf-c-list-group--c-list-group--MarginBottom: var(--pf-c-list-group--RowGap);
+
   // Stacked
   --pf-c-list-group--m-stacked--RowGap: var(--pf-global--spacer--md);
 
   // List
   --pf-c-list-group__list--RowGap: var(--pf-global--spacer--xs);
   --pf-c-list-group__list--ColumnGap: var(--pf-global--spacer--xs);
-
-  // Nested list group
-  --pf-c-list-group--c-list-group--MarginTop: var(--pf-c-list-group--RowGap);
-  --pf-c-list-group--c-list-group--MarginRight: var(--pf-c-list-group--ColumnGap);
-  --pf-c-list-group--c-list-group--MarginBottom: var(--pf-c-list-group--RowGap);
 
   // Title
   --pf-c-list-group-list--title--MarginRight: var(--pf-global--spacer--md);
@@ -24,8 +24,10 @@ $pf-c-list-group--breakpoint-map: build-breakpoint-map("base", "md", "lg", "xl",
   --pf-c-list-group__label--MarginTop: var(--pf-c-list-group--RowGap);
   --pf-c-list-group__label--MarginRight: var(--pf-global--spacer--md);
   --pf-c-list-group__label--MarginBottom: var(--pf-c-list-group--RowGap);
-  --pf-c-list-group__label--PaddingLeft: var(--pf-global--spacer--xs);
   --pf-c-list-group--m-inline__label--MarginRight: var(--pf-global--spacer--md);
+
+  // Toolbar label padding
+  --pf-c-list-group--m-toolbar__label--PaddingLeft: var(--pf-global--spacer--xs);
 
   // Pill
   --pf-c-list-group--m-toolbar--PaddingTop: var(--pf-global--spacer--xs);
@@ -57,6 +59,10 @@ $pf-c-list-group--breakpoint-map: build-breakpoint-map("base", "md", "lg", "xl",
   margin-bottom: var(--pf-c-list-group__label--MarginTop);
 
   // line-height: 1;
+
+  .pf-c-list-group.pf-m-toolbar & {
+    padding-left: var(--pf-c-list-group--m-toolbar__label--PaddingLeft);
+  }
 }
 
 .pf-c-list-group__description {
@@ -97,7 +103,7 @@ $pf-c-list-group--breakpoint-map: build-breakpoint-map("base", "md", "lg", "xl",
   margin-bottom: calc(var(--pf-c-list-group__list--RowGap) / 2);
 
   &:last-child {
-    --pf-c-list-group--ColumnGap: 0;
+    --pf-c-list-group__list--ColumnGap: 0;
   }
 }
 
@@ -126,19 +132,24 @@ $pf-c-list-group--breakpoint-map: build-breakpoint-map("base", "md", "lg", "xl",
   @include pf-apply-breakpoint($breakpoint, $pf-c-list-group--breakpoint-map) {
     .pf-c-list-group.pf-m-stacked#{$breakpoint-name} {
       --pf-c-list-group--RowGap: var(--pf-c-list-group--m-stacked--RowGap);
-      --pf-c-list-group__label--MarginTop: 0;
-      --pf-c-list-group__label--MarginRight: 0;
-      --pf-c-list-group__label--MarginBottom: 0;
-      --pf-c-list-group__label--PaddingLeft: 0;
-      --pf-c-list-group--c-list-group--MarginTop: 0;
-      --pf-c-list-group--c-list-group--MarginRight: 0;
-      --pf-c-list-group--c-list-group--MarginBottom: 0;
+
+      // --pf-c-list-group__label--MarginTop: 0;
+      // --pf-c-list-group__label--MarginRight: 0;
+      // --pf-c-list-group__label--MarginBottom: 0;
+      // --pf-c-list-group__label--PaddingLeft: 0;
+      // --pf-c-list-group--c-list-group--MarginTop: 0;
+      // --pf-c-list-group--c-list-group--MarginRight: 0;
+      // --pf-c-list-group--c-list-group--MarginBottom: 0;
 
       display: grid;
       row-gap: var(--pf-c-list-group--m-stacked--RowGap);
 
+      .pf-c-list-group,
       .pf-c-list-group__label {
-        // --pf-c-list-group__list--RowGap: 0;
+        padding-left: 0;
+        margin-top: 0;
+        margin-right: 0;
+        margin-bottom: 0;
       }
     }
 
@@ -156,11 +167,21 @@ $pf-c-list-group--breakpoint-map: build-breakpoint-map("base", "md", "lg", "xl",
     }
 
     .pf-c-list-group__list.pf-m-row#{$breakpoint-name} {
+      display: inline-flex;
       flex-direction: row;
     }
 
     .pf-c-list-group__list.pf-m-column#{$breakpoint-name} {
+      display: grid;
+      grid-row-gap: var(--pf-c-list-group__list--RowGap);
+      justify-items: start;
       flex-direction: column;
+
+      > .pf-c-list-group__list-item {
+        margin-top: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+      }
     }
   }
 }

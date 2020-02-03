@@ -8,8 +8,34 @@ import './ListGroup.css'
 
 ## Examples
 
+A `.pf-c-list-group__label` can placed adjacent to a `.pf-c-list-group__list` or within a `.pf-c-list-group__list` as a list item.
+
 ```hbs title=Basic
 {{#> list-group list-group--id="list-group-basic-example"}}
+  {{#> list-group-label}}
+    Label
+  {{/list-group-label}}
+  {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+    {{> list-group-content-items-1}}
+  {{/list-group-list}}
+{{/list-group}}
+```
+
+If `.pf-c-list-group__label` is applied to a list item, the following list items will wrap around it.
+
+```hbs title=Basic-label-as-list-item
+{{#> list-group list-group--id="list-group-label-as-list-item"}}
+  {{#> list-group-list}}
+    {{#> list-group-list-item list-group-list-item--IsLabel="true"}}
+      Label
+    {{/list-group-list-item}}
+    {{> list-group-content-items-1}}
+  {{/list-group-list}}
+{{/list-group}}
+```
+
+```hbs title=Basic-group-stacked
+{{#> list-group list-group--modifier="pf-m-stacked" list-group--id="basic-group-stacked-example"}}
   {{#> list-group-label}}
     Label
   {{/list-group-label}}
@@ -19,18 +45,7 @@ import './ListGroup.css'
 {{/list-group}}
 ```
 
-```hbs title=Chip-groups
-{{#> list-group list-group--modifier="pf-m-stacked" list-group--parent-id="chip-group-example"}}
-  {{#> list-group list-group--id=(concat list-group--parent-id '-sub-group1') list-group--IsNested="true"}}
-    {{#> list-group-label}}
-      Label
-    {{/list-group-label}}
-    {{#> list-group-list}}
-      {{> list-group-content-items-1}}
-    {{/list-group-list}}
-  {{/list-group}}
-{{/list-group}}
-```
+`.pf-m-toolbar` can be applied to `.pf-c-list-group` or isolated to `.pf-c-list-group__list`.
 
 ```hbs title=Chip-groups
 {{#> list-group list-group--modifier="pf-m-stacked" list-group--parent-id="chip-group-example"}}

@@ -1,4 +1,6 @@
-#ws-core-c-listgroup-basic .pf-c-list-group__list-item:not(.pf-m-label) {
+#ws-core-c-listgroup-basic .pf-c-list-group__list-item:not(.pf-m-label),
+#ws-core-c-listgroup-basic-group-stacked .pf-c-list-group__list-item:not(.pf-m-label),
+#ws-core-c-listgroup-basic-label-as-list-item .pf-c-list-group__list-item:not(.pf-m-label) {
   padding: 6px;
   border: 1px dashed;
 }
