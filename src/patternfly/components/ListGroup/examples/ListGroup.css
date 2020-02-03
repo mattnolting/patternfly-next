@@ -1,0 +1,4 @@
+#ws-core-c-listgroup-basic .pf-c-list-group__list-item:not(.pf-m-label) {
+  padding: 6px;
+  border: 1px dashed;
+}

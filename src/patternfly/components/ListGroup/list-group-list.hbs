@@ -1,0 +1,12 @@
+<ul class="pf-c-list-group__list{{#if list-group-list--modifier}} {{list-group-list--modifier}}{{/if}}"
+  {{#if list-group-list--title}}
+    title="{{{list-group-list--title}}}"
+  {{/if}}
+  {{#if list-group-list--attribute}}
+    {{{list-group-list--attribute}}}
+  {{/if}}
+  {{#if list-group--IsNested}}
+    aria-labelledby="{{{list-group--id}}}-label"
+  {{/if}}>
+  {{> @partial-block}}
+</ul>

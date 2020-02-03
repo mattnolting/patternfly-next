@@ -1,0 +1,8 @@
+<{{#if list-group-description--type}}{{{list-group-description--type}}}{{else}}span{{/if}} class="pf-c-list-group__description{{#if list-group-description--modifier}} {{list-group-description--modifier}}{{/if}}"
+  {{#if list-group-description--attribute}}
+    {{{list-group-description--attribute}}}
+  {{/if}}
+  aria-hidden="true"
+  id="{{{list-group--id}}}-{{{list-group-description--id}}}">
+  {{> @partial-block}}
+</{{#if list-group-description--type}}{{{list-group-description--type}}}{{else}}span{{/if}}>
