@@ -1,36 +1,36 @@
 {{#> list-group-list-item}}
-  compose
+  key: common
 {{/list-group-list-item}}
 {{#> list-group-list-item}}
-  containers
+  key: server
 {{/list-group-list-item}}
 
-{{#unless list-group-content-items-1--IsShort}}
+{{#unless list-group-content-items-2--IsShort}}
   {{#> list-group-list-item}}
-    docker
+    key: devel
   {{/list-group-list-item}}
   {{#> list-group-list-item}}
-    server
+    key: minimal
   {{/list-group-list-item}}
 
-  {{#if list-group-content-items-1--IsLong}}
+  {{#if list-group-content-items-2--IsLong}}
     {{#> list-group-list-item}}
-      orchestration
+      key: prod
     {{/list-group-list-item}}
     {{#> list-group-list-item}}
-      system
+      key: beta
     {{/list-group-list-item}}
     {{#> list-group-list-item}}
-      web
+      key: cluster
     {{/list-group-list-item}}
     {{#> list-group-list-item}}
-      efs
+      key: provisioned
     {{/list-group-list-item}}
     {{#> list-group-list-item}}
-      pip
+      key: qa
     {{/list-group-list-item}}
     {{#> list-group-list-item}}
-      filesystem
+      key: approved
     {{/list-group-list-item}}
   {{/if}}
 {{/unless}}

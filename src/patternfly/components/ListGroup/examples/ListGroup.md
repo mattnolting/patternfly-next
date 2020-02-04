@@ -11,9 +11,9 @@ import './ListGroup.css'
 A `.pf-c-list-group__label` can placed adjacent to a `.pf-c-list-group__list` or within a `.pf-c-list-group__list` as a list item.
 
 ```hbs title=Basic
-{{#> list-group list-group--id="list-group-basic-example"}}
+{{#> list-group list-group--id="basic-example"}}
   {{#> list-group-label}}
-    Label
+    Tags
   {{/list-group-label}}
   {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
     {{> list-group-content-items-1}}
@@ -24,20 +24,22 @@ A `.pf-c-list-group__label` can placed adjacent to a `.pf-c-list-group__list` or
 If `.pf-c-list-group__label` is applied to a list item, the following list items will wrap around it.
 
 ```hbs title=Basic-label-as-list-item
-{{#> list-group list-group--id="list-group-label-as-list-item"}}
-  {{#> list-group-list}}
+{{#> list-group list-group--id="label-list-item-example"}}
+  {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
     {{#> list-group-list-item list-group-list-item--IsLabel="true"}}
-      Label
+      Tags
     {{/list-group-list-item}}
     {{> list-group-content-items-1}}
   {{/list-group-list}}
 {{/list-group}}
 ```
 
-```hbs title=Basic-group-stacked
-{{#> list-group list-group--modifier="pf-m-stacked" list-group--id="basic-group-stacked-example"}}
+A stacked layout can be achieved with by applying `.pf-m-column` to `.pf-c-list-group`.
+
+```hbs title=Label-stacked-(pf-c-column)
+{{#> list-group list-group--modifier="pf-m-column" list-group--id="label-stacked-example"}}
   {{#> list-group-label}}
-    Label
+    Tags
   {{/list-group-label}}
   {{#> list-group-list}}
     {{> list-group-content-items-1}}
@@ -45,97 +47,137 @@ If `.pf-c-list-group__label` is applied to a list item, the following list items
 {{/list-group}}
 ```
 
-`.pf-m-toolbar` can be applied to `.pf-c-list-group` or isolated to `.pf-c-list-group__list`.
-
-```hbs title=Chip-groups
-{{#> list-group list-group--modifier="pf-m-stacked" list-group--parent-id="chip-group-example"}}
-  {{#> list-group list-group--id=(concat list-group--parent-id '-sub-group1') list-group--IsNested="true"}}
+```hbs title=Nested-groups
+{{#> list-group list-group--parent-id="nested-groups-example" list-group--modifier="pf-m-container" list-group--attribute='role="list" aria-label="Nested group example"'}}
+  {{#> list-group list-group--id=(concat list-group--parent-id '-sub-group1') list-group--IsNested="true" list-group--modifier="" list-group--attribute='role="listitem"'}}
     {{#> list-group-label}}
-      List title
+      {{#> title titleType="h3"}}
+        Tags
+      {{/title}}
     {{/list-group-label}}
-    {{#> list-group-list}}
-      {{> list-group-example-labels-1}}
+    {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+      {{> list-group-content-items-1 list-group-content-items-1--IsShort="true"}}
     {{/list-group-list}}
   {{/list-group}}
-  {{#> list-group list-group--id=(concat list-group--parent-id '-sub-group2') list-group--IsNested="true"}}
+  {{#> list-group list-group--id=(concat list-group--parent-id '-sub-group2') list-group--IsNested="true" list-group--modifier="" list-group--attribute='role="listitem"'}}
     {{#> list-group-label}}
-      Longer title list
+      {{#> title titleType="h3"}}
+        Labels
+      {{/title}}
     {{/list-group-label}}
-    {{#> list-group-list}}
-      {{> list-group-example-labels-2}}
+    {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+      {{> list-group-content-items-2 list-group-content-items-2--IsShort="true"}}
+    {{/list-group-list}}
+  {{/list-group}}
+  {{#> list-group list-group--id=(concat list-group--parent-id '-sub-group3') list-group--IsNested="true" list-group--modifier="" list-group--attribute='role="listitem"'}}
+    {{#> list-group-label}}
+      {{#> title titleType="h3"}}
+        Labels
+      {{/title}}
+    {{/list-group-label}}
+    {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+      {{> list-group-content-items-2}}
     {{/list-group-list}}
   {{/list-group}}
 {{/list-group}}
 ```
 
+`.pf-m-toolbar` can be applied to `.pf-c-list-group` or isolated to `.pf-c-list-group__list`.
+
 ```hbs title=Stacked-example
-{{#> list-group list-group--modifier="pf-m-stacked" list-group--parent-id="list-group-stacked-example"}}
-  {{#> list-group}}
-    {{#> list-group-label list-group-label--id="description"}}
-      List 1
+{{#> list-group list-group--modifier="pf-m-column" list-group--parent-id="list-group-column-example" list-group--attribute='role="list" aria-label="Stacked example"'}}
+  {{#> list-group list-group--attribute='' list-group--attribute='role="listitem"'}}
+    {{#> list-group-label}}
+      Tags
     {{/list-group-label}}
-    {{#> list-group-list list-group-list--title="List group"}}
-      {{> list-group-example-labels-1}}
+    {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+      {{> list-group-content-items-1}}
     {{/list-group-list}}
   {{/list-group}}
-  {{#> list-group}}
-    {{#> list-group-label list-group-label--id="description"}}
-      List 1
+  {{#> list-group list-group--attribute='' list-group--attribute='role="listitem"'}}
+    {{#> list-group-label}}
+      Labels
     {{/list-group-label}}
-    {{#> list-group-list list-group-list--title="List group"}}
-      {{> list-group-example-labels-2}}
+    {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+      {{> list-group-content-items-2}}
     {{/list-group-list}}
   {{/list-group}}
 {{/list-group}}
 ```
 
 ```hbs title=Nested-pill-groups-example
-{{#> list-group list-group--modifier="pf-m-stackeds" list-group--parent-id="nested-pill-groups-example" list-group--attribute='role="list"'}}
-  {{#> list-group-label list-group-label--id=(concat list-group '-description1') list-group-label--modifier="pf-m-header"}}
+{{#> list-group list-group--modifier="pf-m-columns" list-group--parent-id="nested-pill-groups-example" list-group--attribute=(concat 'role="list" aria-labelledby=" nested-pill-groups-example-label"')}}
+  {{#> list-group-label list-group-label--id=(concat list-group--parent-id '-label') list-group-label--modifier="pf-m-header"}}
     Group label. This label describes the group of nested list groups.
   {{/list-group-label}}
 
   {{#> list-group list-group--id=(concat list-group--parent-id '-nested-list1') list-group--attribute='' list-group--modifier='pf-m-toolbar'}}
     {{#> list-group-label list-group-label--id="label1"}}
-      Label
+      Tags
     {{/list-group-label}}
     {{#> list-group-list}}
-      {{> list-group-example-labels-2}}
+      {{> list-group-content-items-1}}
     {{/list-group-list}}
   {{/list-group}}
 
   {{#> list-group list-group--id=(concat list-group--parent-id '-nested-list2') list-group--attribute='' list-group--modifier='pf-m-toolbar'}}
     {{#> list-group-label list-group-label--id="label2"}}
-      Label of different length
+      Labels
     {{/list-group-label}}
     {{#> list-group-list}}
-      {{> list-group-example-labels-1}}
+      {{> list-group-content-items-2}}
     {{/list-group-list}}
   {{/list-group}}
 
   {{#> list-group list-group--id=(concat list-group--parent-id '-nested-list3') list-group--attribute='' list-group--modifier=''}}
     {{#> list-group-list list-group-list--modifier="pf-m-toolbar"}}
       {{#> list-group-list-item list-group-list-item--IsLabel="true" list-group-list-item--id=(concat list-group-id '-label3')}}
-        Label, this is hidden from assistive technologies
+        Tags
       {{/list-group-list-item}}
-      {{> list-group-example-labels-2}}
+      {{> list-group-content-items-1}}
     {{/list-group-list}}
   {{/list-group}}
 
   {{#> list-group list-group--id=(concat list-group--parent-id '-nested-list4') list-group--attribute='' list-group--modifier=''}}
     {{#> list-group-list list-group-list--modifier="pf-m-toolbar"}}
       {{#> list-group-list-item list-group-list-item--IsLabel="true" list-group-list-item--id=(concat list-group-id '-label4')}}
-        Label for group 2, this is hidden from assistive technologies
+        Labels
       {{/list-group-list-item}}
-      {{> list-group-example-labels-1}}
+      {{> list-group-content-items-1}}
     {{/list-group-list}}
   {{/list-group}}
 {{/list-group}}
 ```
 
 ```hbs title=Nested-example
-{{#> list-group list-group--modifier="pf-m-stacked" list-group--parent-id="list-group-nested-example" list-group--attribute='role="list"'}}
-  {{#> list-group-label list-group-label--id=(concat list-group '-description1')}}
+{{#> list-group list-group--parent-id="nested-example" list-group--attribute='role="list"'}}
+  {{#> list-group-label list-group-label--id=(concat list-group '-label1')}}
+    Group label. This label describes the group of nested list groups.
+  {{/list-group-label}}
+
+  {{#> list-group list-group--id=(concat list-group--parent-id '-sub-group1') list-group--attribute='' list-group--modifier=''}}
+    {{#> list-group-list}}
+      {{#> list-group-list-item list-group-list-item--IsLabel="true" list-group-list-item--id=(concat list-group-id '-label1')}}
+        Label, this is hidden from assistive technologies
+      {{/list-group-list-item}}
+      {{> list-group-content-items-1}}
+    {{/list-group-list}}
+  {{/list-group}}
+
+  {{#> list-group list-group--id=(concat list-group--parent-id '-sub-group2') list-group--attribute='' list-group--modifier=''}}
+    {{#> list-group-list}}
+      {{#> list-group-list-item list-group-list-item--IsLabel="true" list-group-list-item--id=(concat list-group-id '-label2')}}
+        Label for group 2, this is hidden from assistive technologies
+      {{/list-group-list-item}}
+      {{> list-group-content-items-2}}
+    {{/list-group-list}}
+  {{/list-group}}
+{{/list-group}}
+```
+
+```hbs title=Nested-stacked-example
+{{#> list-group list-group--modifier="pf-m-column" list-group--parent-id="nested-stacked-example" list-group--attribute=(concat 'role="list" aria-labelledby="' list-group--parent-id '-label')}}
+  {{#> list-group-label list-group-label--id="label"}}
     Group label. This label describes the group of nested list groups.
   {{/list-group-label}}
 
@@ -147,7 +189,7 @@ If `.pf-c-list-group__label` is applied to a list item, the following list items
       {{#> list-group-list-item list-group-list-item--IsLabel="true" list-group-list-item--id=(concat list-group-id '-label1')}}
         Label, this is hidden from assistive technologies
       {{/list-group-list-item}}
-      {{> list-group-example-labels-1}}
+      {{> list-group-content-items-1}}
     {{/list-group-list}}
   {{/list-group}}
 
@@ -159,9 +201,33 @@ If `.pf-c-list-group__label` is applied to a list item, the following list items
       {{#> list-group-list-item list-group-list-item--IsLabel="true" list-group-list-item--id=(concat list-group-id '-label2')}}
         Label for group 2, this is hidden from assistive technologies
       {{/list-group-list-item}}
-      {{> list-group-example-labels-2}}
+      {{> list-group-content-items-2}}
     {{/list-group-list}}
   {{/list-group}}
+{{/list-group}}
+```
+
+`.pf-m-column` can also be applied to `.pf-c-list-group__list`, which will stack the list items.
+
+```hbs title=Group-and-list-stacked
+{{#> list-group list-group--modifier="pf-m-column" list-group--id="group-and-list-column-example"}}
+  {{#> list-group-label}}
+    Tags
+  {{/list-group-label}}
+  {{#> list-group-list list-group-list--modifier="pf-m-column"}}
+    {{> list-group-content-items-1}}
+  {{/list-group-list}}
+{{/list-group}}
+```
+
+```hbs title=No-wrap-example
+{{#> list-group list-group--modifier="pf-m-nowrap" list-group--id="nested-groups-example"}}
+  {{#> list-group-label list-group-label--attribute='aria-label="Tags"'}}
+    <i class="fas fa-tag" aria-hidden="true"></i>
+  {{/list-group-label}}
+  {{#> list-group-list}}
+    {{> list-group-content-items-1 list-group-content-items-1--IsLong="true"}}
+  {{/list-group-list}}
 {{/list-group}}
 ```
 
@@ -175,7 +241,7 @@ If `.pf-c-list-group__label` is applied to a list item, the following list items
       Nested list header
     {{/list-group-label}}
     {{#> list-group-list list-group-list--id="List group 1"}}
-      {{> list-group-example-labels-1}}
+      {{> list-group-content-items-1}}
     {{/list-group-list}}
   {{/list-group}}
 
@@ -184,7 +250,7 @@ If `.pf-c-list-group__label` is applied to a list item, the following list items
       Nested list label
     {{/list-group-label}}
     {{#> list-group-list list-group-list--id=(concat list-group--id '-list2')}}
-      {{> list-group-example-labels-1}}
+      {{> list-group-content-items-2}}
     {{/list-group-list}}
   {{/list-group}}
 {{/list-group}}
@@ -211,5 +277,5 @@ The list group component provides a default SVG icon. If an image is used it sho
 | `.pf-c-list-group__description` | `<div>` | Initiates a list group description. |
 | `.pf-c-list-group__list` | `<div>` | Initiates a list group list. **Required** |
 | `.pf-c-list-group__list-item` | `<div>` | Initiates a list group list item. **Required** |
-| `.pf-m-stacked` | `.pf-c-list-group` | Modifies list group layout. |
+| `.pf-m-column` | `.pf-c-list-group` | Modifies list group layout. |
 | `.pf-m-toolbar` | `.pf-c-list-group__list` | Modifies list group list presentation. |

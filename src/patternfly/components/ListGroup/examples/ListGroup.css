@@ -1,6 +1,25 @@
 #ws-core-c-listgroup-basic .pf-c-list-group__list-item:not(.pf-m-label),
 #ws-core-c-listgroup-basic-group-stacked .pf-c-list-group__list-item:not(.pf-m-label),
-#ws-core-c-listgroup-basic-label-as-list-item .pf-c-list-group__list-item:not(.pf-m-label) {
-  padding: 6px;
-  border: 1px dashed;
+#ws-core-c-listgroup-basic-label-as-list-item .pf-c-list-group__list-item:not(.pf-m-label),
+#ws-core-c-listgroup-label-stacked-pf-c-column .pf-c-list-group__list-item:not(.pf-m-label),
+#ws-core-c-listgroup-basic-column .pf-c-list-group__list-item:not(.pf-m-label),
+#ws-core-c-listgroup-group-and-list-stacked .pf-c-list-group__list-item:not(.pf-m-label),
+#ws-core-c-listgroup-nested-groups .pf-c-list-group__list-item:not(.pf-m-label),
+#ws-core-c-listgroup-no-wrap-example .pf-c-list-group__list-item:not(.pf-m-label),
+.pf-c-list-group__list-item:not(.pf-m-label) {
+  padding: 2px 4px;
+  /* border: 1px dashed; */
+  background: #ddd;
+}
+
+.pf-c-list-group__list {
+
+}
+
+.pf-c-list-group {
+  border: 1px dashed #ddd;
+}
+
+.ws-preview-html {
+  border: 1px solid red;
 }
