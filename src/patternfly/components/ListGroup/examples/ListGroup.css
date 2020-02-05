@@ -7,19 +7,28 @@
 #ws-core-c-listgroup-nested-groups .pf-c-list-group__list-item:not(.pf-m-label),
 #ws-core-c-listgroup-no-wrap-example .pf-c-list-group__list-item:not(.pf-m-label),
 .pf-c-list-group__list-item:not(.pf-m-label) {
-  padding: 2px 4px;
+  /* padding: 2px 4px; */
   /* border: 1px dashed; */
-  background: #ddd;
+  /* background: #ddd; */
 }
 
 .pf-c-list-group__list {
+  /* border: 1px solid #ddd; */
+}
 
+.pf-c-list-group__list-item {
+  /* border: 1px solid #ddd; */
+  /* background: #ddd; */
+}
+
+.pf-c-list-group .pf-c-list-group {
+  /* border: 1px solid #ddd; */
 }
 
 .pf-c-list-group {
-  border: 1px dashed #ddd;
+  /* border: 1px solid red; */
 }
 
-.ws-preview-html {
+/* .ws-lite-example {
   border: 1px solid red;
-}
+} */

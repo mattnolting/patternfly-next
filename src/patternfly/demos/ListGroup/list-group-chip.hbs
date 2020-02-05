@@ -1,8 +1,8 @@
 {{#> chip chip--type="div"}}
-  {{#> chip-text chip-text--attribute='id="chip_one"'}}
-    Chip
+  {{#> chip-text chip-text--attribute=(concat 'id="' list-group--id '-chip-' list-group-chip--number '"')}}
+    {{{list-group-chip--text}}}
   {{/chip-text}}
-  {{#> button button--modifier="pf-m-plain" button--attribute='aria-labelledby="remove_chip_one chip_one" aria-label="Remove" id="remove_chip_one"'}}
+  {{#> button button--modifier="pf-m-plain" button--attribute=(concat 'aria-labelledby="remove-chip-' list-group-chip--number ' ' list-group--id '-chip-' list-group-chip--number '" aria-label="Remove" id="remove-chip-' list-group-chip--number '"')}}
     <i class="fas fa-times-circle" aria-hidden="true"></i>
   {{/button}}
 {{/chip}}

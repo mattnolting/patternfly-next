@@ -34,6 +34,8 @@ If `.pf-c-list-group__label` is applied to a list item, the following list items
 {{/list-group}}
 ```
 
+## Label stacked, pf-m-column
+
 A stacked layout can be achieved with by applying `.pf-m-column` to `.pf-c-list-group`.
 
 ```hbs title=Label-stacked-(pf-c-column)
@@ -41,67 +43,80 @@ A stacked layout can be achieved with by applying `.pf-m-column` to `.pf-c-list-
   {{#> list-group-label}}
     Tags
   {{/list-group-label}}
-  {{#> list-group-list}}
+  {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
     {{> list-group-content-items-1}}
   {{/list-group-list}}
 {{/list-group}}
 ```
 
+## Nested groups
+
+<!-- {{#> list-group list-group--parent-id="nested-groups-example" list-group--modifier="pf-m-container" list-group--attribute='role="list" aria-label="Nested group example"'}} -->
 ```hbs title=Nested-groups
-{{#> list-group list-group--parent-id="nested-groups-example" list-group--modifier="pf-m-container" list-group--attribute='role="list" aria-label="Nested group example"'}}
-  {{#> list-group list-group--id=(concat list-group--parent-id '-sub-group1') list-group--IsNested="true" list-group--modifier="" list-group--attribute='role="listitem"'}}
-    {{#> list-group-label}}
-      {{#> title titleType="h3"}}
-        Tags
-      {{/title}}
-    {{/list-group-label}}
-    {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
-      {{> list-group-content-items-1 list-group-content-items-1--IsShort="true"}}
-    {{/list-group-list}}
-  {{/list-group}}
-  {{#> list-group list-group--id=(concat list-group--parent-id '-sub-group2') list-group--IsNested="true" list-group--modifier="" list-group--attribute='role="listitem"'}}
-    {{#> list-group-label}}
-      {{#> title titleType="h3"}}
-        Labels
-      {{/title}}
-    {{/list-group-label}}
-    {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
-      {{> list-group-content-items-2 list-group-content-items-2--IsShort="true"}}
-    {{/list-group-list}}
-  {{/list-group}}
-  {{#> list-group list-group--id=(concat list-group--parent-id '-sub-group3') list-group--IsNested="true" list-group--modifier="" list-group--attribute='role="listitem"'}}
-    {{#> list-group-label}}
-      {{#> title titleType="h3"}}
-        Labels
-      {{/title}}
-    {{/list-group-label}}
-    {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
-      {{> list-group-content-items-2}}
-    {{/list-group-list}}
-  {{/list-group}}
+{{#> list-group list-group--id="nested-groups-example" list-group--attribute=(concat 'aria-label="Parent list label" role="list"')}}
+  {{#> list-group-label}}
+    {{#> title titleType="h3"}}
+      Tags
+    {{/title}}
+  {{/list-group-label}}
+  {{#> list-group-list list-group-list--type="div"}}
+    {{#> list-group list-group--id=(concat list-group--id '-sub-group1') list-group--attribute='' list-group--IsNested="true" list-group--modifier=""}}
+      {{#> list-group-label}}
+        {{#> title titleType="h3"}}
+          Tags
+        {{/title}}
+      {{/list-group-label}}
+      {{#> list-group-list list-group-list--type="ul" list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+        {{> list-group-content-items-1 list-group-content-items-1--IsShort="true"}}
+      {{/list-group-list}}
+    {{/list-group}}
+    {{#> list-group list-group--id=(concat list-group--id '-sub-group2') list-group--attribute='' list-group--IsNested="true" list-group--modifier=""}}
+      {{#> list-group-label}}
+        {{#> title titleType="h3"}}
+          Labels
+        {{/title}}
+      {{/list-group-label}}
+      {{#> list-group-list list-group-list--type="ul" list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+        {{> list-group-content-items-2 list-group-content-items-2--IsShort="true"}}
+      {{/list-group-list}}
+    {{/list-group}}
+    {{#> list-group list-group--id=(concat list-group--id '-sub-group3') list-group--attribute='' list-group--IsNested="true" list-group--modifier=""}}
+      {{#> list-group-label}}
+        {{#> title titleType="h3"}}
+          Labels
+        {{/title}}
+      {{/list-group-label}}
+      {{#> list-group-list list-group-list--type="ul" list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+        {{> list-group-content-items-2}}
+      {{/list-group-list}}
+    {{/list-group}}
+  {{/list-group-list}}
 {{/list-group}}
 ```
 
+## Stacked
 `.pf-m-toolbar` can be applied to `.pf-c-list-group` or isolated to `.pf-c-list-group__list`.
 
 ```hbs title=Stacked-example
-{{#> list-group list-group--modifier="pf-m-column" list-group--parent-id="list-group-column-example" list-group--attribute='role="list" aria-label="Stacked example"'}}
-  {{#> list-group list-group--attribute='' list-group--attribute='role="listitem"'}}
-    {{#> list-group-label}}
-      Tags
-    {{/list-group-label}}
-    {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
-      {{> list-group-content-items-1}}
-    {{/list-group-list}}
-  {{/list-group}}
-  {{#> list-group list-group--attribute='' list-group--attribute='role="listitem"'}}
-    {{#> list-group-label}}
-      Labels
-    {{/list-group-label}}
-    {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
-      {{> list-group-content-items-2}}
-    {{/list-group-list}}
-  {{/list-group}}
+{{#> list-group list-group--parent-id="list-group-column-example" list-group--attribute='role="list" aria-label="Stacked example"'}}
+  {{#> list-group-list list-group-list--type="div" list-group-list--modifier="pf-m-column"}}
+    {{#> list-group list-group--attribute='' list-group--attribute='role="listitem"'}}
+      {{#> list-group-label}}
+        Tags
+      {{/list-group-label}}
+      {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"') list-group-list--modifier=""}}
+        {{> list-group-content-items-1}}
+      {{/list-group-list}}
+    {{/list-group}}
+    {{#> list-group list-group--attribute='' list-group--attribute='role="listitem"'}}
+      {{#> list-group-label}}
+        Labels
+      {{/list-group-label}}
+      {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"') list-group-list--modifier=""}}
+        {{> list-group-content-items-2}}
+      {{/list-group-list}}
+    {{/list-group}}
+  {{/list-group-list}}
 {{/list-group}}
 ```
 

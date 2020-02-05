@@ -1,29 +1,36 @@
 $pf-c-list-group--breakpoint-map: build-breakpoint-map("base", "md", "lg", "xl", "2xl");
 
+.pf-c-list-group--border-test {
+  position: relative;
+  z-index: 1;
+  padding: 12px;
+  background: rgba(100, 20, 100, .2);
+}
+
 .pf-c-list-group {
-  --pf-c-list-group--RowGap: var(--pf-global--spacer--sm);
-  --pf-c-list-group--ColumnGap: var(--pf-global--spacer--md);
+  --pf-c-list-group--RowGap: var(--pf-global--spacer--xs);
+  --pf-c-list-group--ColumnGap: var(--pf-global--spacer--xs);
   --pf-c-list-group--GridGap: var(--pf-global--spacer--md);
 
   // Nested list group
   --pf-c-list-group--c-list-group--MarginTop: var(--pf-c-list-group--RowGap);
-  --pf-c-list-group--c-list-group--MarginRight: var(--pf-c-list-group--ColumnGap);
+  --pf-c-list-group--c-list-group--MarginRight: var(--pf-global--spacer--lg);
   --pf-c-list-group--c-list-group--MarginBottom: var(--pf-c-list-group--RowGap);
 
   // Stacked
-  --pf-c-list-group--m-column--RowGap: var(--pf-global--spacer--md);
+  --pf-c-list-group--m-column--RowGap: var(--pf-global--spacer--sm);
 
   // List
-  --pf-c-list-group__list--RowGap: var(--pf-global--spacer--xs);
+  --pf-c-list-group__list--RowGap: var(--pf-c-list-group--RowGap);
   --pf-c-list-group__list--ColumnGap: var(--pf-global--spacer--xs);
 
   // Title
   --pf-c-list-group-list--title--MarginRight: var(--pf-global--spacer--md);
 
   // Label
-  --pf-c-list-group__label--MarginTop: 2px;
+  --pf-c-list-group__label--MarginTop: 1px;
   --pf-c-list-group__label--MarginRight: var(--pf-global--spacer--md);
-  --pf-c-list-group__label--MarginBottom: 2px ;
+  --pf-c-list-group__label--MarginBottom: 1px;
   --pf-c-list-group--m-inline__label--MarginRight: var(--pf-global--spacer--md);
 
   // Toolbar label padding
@@ -37,52 +44,35 @@ $pf-c-list-group--breakpoint-map: build-breakpoint-map("base", "md", "lg", "xl",
   --pf-c-list-group--m-toolbar--BackgroundColor: var(--pf-global--BackgroundColor--300);
   --pf-c-list-group--m-toolbar--BorderRadius: var(--pf-global--BorderRadius--sm);
 
+  position: relative;
   display: inline-flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  margin-top: calc(var(--pf-c-list-group--RowGap) / 2);
+  align-items: center;
+  padding: 0;
   margin-right: var(--pf-c-list-group--c-list-group--MarginRight);
-  margin-bottom: calc(var(--pf-c-list-group--RowGap) / 2);
+
+  // margin-top: calc(var(--pf-c-list-group--RowGap) / 2);
+  // margin-bottom: calc(var(--pf-c-list-group--RowGap) / 2);
 
   // reset list styles
-  padding: 0;
   list-style-type: none;
 
   &:last-of-type {
     margin-right: 0;
   }
 
-  &:only-child {
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 0;
-  }
-
-  &.pf-m-container {
-    margin-top: calc((var(--pf-c-list-group--RowGap) / 2) * -1);
-    margin-bottom: calc((var(--pf-c-list-group--RowGap) / 2) * -1);
-  }
-
-  // remove for gap support
-  .pf-c-list-group {
-    // margin-top: var(--pf-c-list-group--c-list-group--MarginTop);
-    // margin-right: var(--pf-c-list-group--c-list-group--MarginRight);
-    // margin-bottom: var(--pf-c-list-group--c-list-group--MarginTop);
-
-    // &:first-child {
-    //   margin-top: -2px;
-    // }
-
-    &:last-child {
-      // margin-bottom: -2px;
-
-      // margin-right: 0;
-    }
-  }
-
   // &.pf-m-container {
   //   margin-top: calc((var(--pf-c-list-group--RowGap) / 2) * -1);
   //   margin-bottom: calc((var(--pf-c-list-group--RowGap) / 2) * -1);
+  // }
+
+  // &::after {
+  //   position: absolute;
+  //   top: 100%;
+  //   width: var(--pf-c-list-group--RowGap);
+  //   height: var(--pf-c-list-group--RowGap);
+  //   content: '';
+  //   background: red;
   // }
 }
 
@@ -119,18 +109,30 @@ $pf-c-list-group--breakpoint-map: build-breakpoint-map("base", "md", "lg", "xl",
   grid-column-start: 1;
   display: inline-flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  margin-top: calc((var(--pf-c-list-group__list--RowGap) / 2) * -1);
+  align-items: center;
+  margin-top: calc(var(--pf-c-list-group__list--RowGap) / 2 * -1);
   margin-right: var(--pf-c-list-group__list--ColumnGap);
-  margin-bottom: calc((var(--pf-c-list-group__list--RowGap) / 2) * -1);
+  margin-bottom: calc(var(--pf-c-list-group__list--RowGap) / 2 * -1);
 
   // if multiple lists in a list group
-  &:last-child {
+  &:last-of-type {
     margin-right: 0;
+  }
+
+  // remove for gap support
+  .pf-c-list-group {
+    margin-top: calc(var(--pf-c-list-group--RowGap) / 2);
+    margin-right: var(--pf-c-list-group--c-list-group--MarginRight);
+    margin-bottom: calc(var(--pf-c-list-group--RowGap) / 2);
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }
 
 .pf-c-list-group__list-item {
+  display: inline-flex;
   margin-top: calc(var(--pf-c-list-group__list--RowGap) / 2);
   margin-right: var(--pf-c-list-group__list--ColumnGap);
   margin-bottom: calc(var(--pf-c-list-group__list--RowGap) / 2);
@@ -171,6 +173,10 @@ $pf-c-list-group--breakpoint-map: build-breakpoint-map("base", "md", "lg", "xl",
   }
 }
 
+// .pf-c-list-group__label + .pf-c-list-group__list {
+//   margin-top: 41px;
+// }
+
 // Toggle group modifiers
 @each $breakpoint, $breakpoint-value in $pf-c-list-group--breakpoint-map {
   $breakpoint-name: if($breakpoint != "base", -on-#{$breakpoint}, "");
@@ -199,7 +205,8 @@ $pf-c-list-group--breakpoint-map: build-breakpoint-map("base", "md", "lg", "xl",
       //   margin-bottom: 0;
       // }
 
-      flex-direction: column;
+      // flex-direction: column;
+      display: grid;
       justify-items: start;
       row-gap: var(--pf-c-list-group--m-column--RowGap);
 
@@ -208,6 +215,12 @@ $pf-c-list-group--breakpoint-map: build-breakpoint-map("base", "md", "lg", "xl",
         padding-left: 0;
         margin-top: 0;
         margin-right: 0;
+        margin-bottom: 0;
+      }
+
+      // remove for gap support
+      .pf-c-list-group__list .pf-c-list-group {
+        margin-top: 0;
         margin-bottom: 0;
       }
     }
@@ -246,9 +259,21 @@ $pf-c-list-group--breakpoint-map: build-breakpoint-map("base", "md", "lg", "xl",
       justify-items: start;
       flex-direction: column;
 
+      // .pf-c-list-group {
+      //   margin-top: 0;
+      //   margin-right: 0;
+      //   margin-bottom: 0;
+      // }
+
       > .pf-c-list-group__list-item {
         margin-top: 0;
         margin-right: 0;
+        margin-bottom: 0;
+      }
+
+      // remove for gap support
+      > .pf-c-list-group {
+        margin-top: 0;
         margin-bottom: 0;
       }
     }
