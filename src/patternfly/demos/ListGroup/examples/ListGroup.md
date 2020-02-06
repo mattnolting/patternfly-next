@@ -35,6 +35,60 @@ section: demos
 {{> list-group-border-test}}
 ```
 
+### Nested chip groups
+
+```hbs title=List-group-chips-nested
+{{> list-group-border-test}}
+{{#> list-group list-group--id="list-group-badges-example" list-group--attribute=''}}
+  {{#> list-group-list list-group-list--type="div" list-group-list--attribute=(concat 'role="list" aria-label="Chip groups parent group"') list-group-list--modifier="pf-m-column"}}
+    {{#> list-group list-group--id=(concat list-group--id '-subgroup1') list-group--attribute=''}}
+      {{#> list-group-label list-group-label--attribute=''}}
+        Chip set one
+      {{/list-group-label}}
+      {{#> list-group-list list-group-list--type="ul" list-group-list--attribute='' list-group-list--IsLabelledby="true" list-group-list--modifier=""}}
+        {{> list-group-demo-content-chips list-group-demo-content-badges--IsShort="true"}}
+      {{/list-group-list}}
+    {{/list-group}}
+    {{#> list-group list-group--id=(concat list-group--id '-subgroup2') list-group--attribute=''}}
+      {{#> list-group-label list-group-label--attribute=''}}
+        Chip set two
+      {{/list-group-label}}
+      {{#> list-group-list list-group-list--type="ul" list-group-list--attribute='' list-group-list--IsLabelledby="true" list-group-list--modifier=""}}
+        {{> list-group-demo-content-chips list-group-demo-content-badges--IsShort="true"}}
+      {{/list-group-list}}
+    {{/list-group}}
+  {{/list-group-list}}
+{{/list-group}}
+{{> list-group-border-test}}
+```
+
+### Label list group
+
+```hbs title=Label-list-group
+{{> list-group-border-test}}
+{{#> list-group list-group--id="label-list-group-example"}}
+  {{#> list-group-label}}
+    Labels
+  {{/list-group-label}}
+  {{#> list-group-list list-group-list--IsLabelledby="true"}}
+    {{> list-group-demo-content-labels}}
+  {{/list-group-list}}
+{{/list-group}}
+{{> list-group-border-test}}
+```
+
+### Button list group
+
+```hbs title=Button-list-group
+{{> list-group-border-test}}
+{{#> list-group list-group--id="button-list-group-example"}}
+  {{#> list-group-list list-group-list--IsLabelledby="true"}}
+    {{> list-group-demo-content-buttons}}
+  {{/list-group-list}}
+{{/list-group}}
+{{> list-group-border-test}}
+```
+
 ### Badge-list-label-as-list-item
 
 The label will wrap with other list items
@@ -115,21 +169,21 @@ Nested groups will wrap by default
 
 ```hbs title=List-group-badges-nested-and-stacked
 {{> list-group-border-test}}
-{{#> list-group list-group--id="list-group-badges-example"}}
-  {{#> list-group-list}}
-    {{#> list-group list-group--id="list-group-badges-example"}}
-      {{#> list-group-label}}
+{{#> list-group list-group--id="list-group-badges-example" list-group--attribute=''}}
+  {{#> list-group-list list-group-list--type="div" list-group-list--attribute=''}}
+    {{#> list-group list-group--id="list-group-badges-example" list-group--attribute=''}}
+      {{#> list-group-label list-group-label--attribute=''}}
         Unread tags
       {{/list-group-label}}
-      {{#> list-group-list}}
+      {{#> list-group-list list-group-list--attribute=''}}
         {{> list-group-demo-content-badges list-group-demo-content-badges--IsLong="true" badge--modifier="pf-m-unread"}}
       {{/list-group-list}}
     {{/list-group}}
-    {{#> list-group list-group--id="list-group-badges-example"}}
-      {{#> list-group-label}}
+    {{#> list-group list-group--id="list-group-badges-example" list-group--attribute=''}}
+      {{#> list-group-label list-group-label--attribute=''}}
         Read tags
       {{/list-group-label}}
-      {{#> list-group-list}}
+      {{#> list-group-list list-group-list--attribute=''}}
         {{> list-group-demo-content-badges badge--modifier="pf-m-unread"}}
       {{/list-group-list}}
     {{/list-group}}

@@ -1,0 +1,56 @@
+{{#> list-group-list-item}}
+  {{#> label}}
+    Virtualization
+  {{/label}}
+{{/list-group-list-item}}
+{{#> list-group-list-item}}
+  {{#> label}}
+    Performance
+  {{/label}}
+{{/list-group-list-item}}
+{{#> list-group-list-item}}
+  {{#> label}}
+    Integration
+  {{/label}}
+{{/list-group-list-item}}
+
+{{#unless list-group-demo-content-labels--IsShort}}
+  {{#> list-group-list-item}}
+    {{#> label}}
+      Managed
+    {{/label}}
+  {{/list-group-list-item}}
+  {{#> list-group-list-item}}
+    {{#> label}}
+      Set up
+    {{/label}}
+  {{/list-group-list-item}}
+
+  {{#if list-group-demo-content-labels--IsLong}}
+    {{#> list-group-list-item}}
+      {{#> label}}
+        Support
+      {{/label}}
+    {{/list-group-list-item}}
+    {{#> list-group-list-item}}
+      {{#> label}}
+        Cross-platform
+      {{/label}}
+    {{/list-group-list-item}}
+    {{#> list-group-list-item}}
+      {{#> label}}
+        Infrastructure
+      {{/label}}
+    {{/list-group-list-item}}
+    {{#> list-group-list-item}}
+      {{#> label}}
+        Hybrid Cloud
+      {{/label}}
+    {{/list-group-list-item}}
+    {{#> list-group-list-item}}
+      {{#> label}}
+        Ecosystem
+      {{/label}}
+    {{/list-group-list-item}}
+  {{/if}}
+{{/unless}}

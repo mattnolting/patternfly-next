@@ -251,7 +251,7 @@ A stacked layout can be achieved with by applying `.pf-m-column` to `.pf-c-list-
   {{#> list-group-label}}
     List header
   {{/list-group-label}}
-  {{#> list-group list-group--id=(concat list-group--parent-id '-list-group-nested-list1') list-group--modifier="pf-m-inline" list-group--attribute=''}}
+  {{#> list-group list-group--id=(concat list-group--parent-id '-list-group-nested-list1') list-group--modifier="pf-m-row" list-group--attribute=''}}
     {{#> list-group-label list-group-label--id="label1"}}
       Nested list header
     {{/list-group-label}}
@@ -260,7 +260,7 @@ A stacked layout can be achieved with by applying `.pf-m-column` to `.pf-c-list-
     {{/list-group-list}}
   {{/list-group}}
 
-  {{#> list-group list-group--id=(concat list-group--parent-id '-list-group-nested-list2') list-group--modifier="pf-m-inline" list-group--attribute=""}}
+  {{#> list-group list-group--id=(concat list-group--parent-id '-list-group-nested-list2') list-group--modifier="pf-m-row" list-group--attribute=""}}
     {{#> list-group-label list-group-label--id="label2"}}
       Nested list label
     {{/list-group-label}}
