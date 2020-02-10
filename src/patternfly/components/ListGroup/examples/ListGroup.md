@@ -16,7 +16,34 @@ A `.pf-c-list-group__label` can placed adjacent to a `.pf-c-list-group__list` or
     Tags
   {{/list-group-label}}
   {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
-    {{> list-group-content-items-1}}
+    <!-- {{> list-group-content-items-1}} -->
+    {{> list-group-demo-content-chips}}
+  {{/list-group-list}}
+{{/list-group}}
+```
+
+```hbs title=Nested-example-test
+{{#> list-group list-group--id="nested-example-test" list-group--attribute='role="list" aria-label="testing the label for parent group"'}}
+  {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+    {{#> list-group-list-item}}
+      {{#> list-group list-group--id=(concat list-group--id '-subgroup1') list-group--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+        {{#> list-group-label list-group-label--id=(concat list-group--id '-label')}}
+          System type tags
+        {{/list-group-label}}
+        {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+          {{> list-group-demo-content-chips}}
+        {{/list-group-list}}
+      {{/list-group}}
+    {{/list-group-list-item}}
+    {{#> list-group-list-item}}
+      {{#> list-group list-group--id=(concat list-group--id '-subgroup2') list-group--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}    {{#> list-group-label list-group-label--id=(concat list-group--id '-label')}}
+          Cluster type chips
+        {{/list-group-label}}
+        {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+          {{> list-group-demo-content-chips list-group-demo-content-chips--IsShort="true"}}
+        {{/list-group-list}}
+      {{/list-group}}
+    {{/list-group-list-item}}
   {{/list-group-list}}
 {{/list-group}}
 ```

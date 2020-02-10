@@ -12,6 +12,18 @@
   /* background: #ddd; */
 }
 
+/* .pf-c-list-group__list-item:not(.pf-m-label) {
+  box-shadow: inset 0 0 1px 1px #ddd;
+}
+
+.pf-c-list-group {
+  box-shadow: inset 0 0 1px 1px red;
+}
+
+.pf-c-list-group .pf-c-list-group {
+  box-shadow: none;
+} */
+
 .pf-c-list-group__list {
   /* border: 1px solid #ddd; */
 }
@@ -25,10 +37,10 @@
   /* border: 1px solid #ddd; */
 }
 
-.pf-c-list-group {
-  /* border: 1px solid red; */
-}
-
 /* .ws-lite-example {
   border: 1px solid red;
 } */
+
+html body .ws-lite-example {
+  padding: 0;
+}
