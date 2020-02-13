@@ -14,13 +14,17 @@
 
 /* .pf-c-list-group__list-item:not(.pf-m-label) {
   box-shadow: inset 0 0 1px 1px #ddd;
-}
+} */
 
 .pf-c-list-group {
-  box-shadow: inset 0 0 1px 1px red;
+  /* box-shadow: inset 0 0 1px 1px red; */
 }
 
 .pf-c-list-group .pf-c-list-group {
+  box-shadow: none;
+}
+
+/* .pf-c-list-group .pf-c-list-group {
   box-shadow: none;
 } */
 
@@ -42,5 +46,5 @@
 } */
 
 html body .ws-lite-example {
-  padding: 0;
+  /* padding: 0; */
 }

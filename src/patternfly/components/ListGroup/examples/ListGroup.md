@@ -22,25 +22,35 @@ A `.pf-c-list-group__label` can placed adjacent to a `.pf-c-list-group__list` or
 {{/list-group}}
 ```
 
+## Nested-example-test
+
 ```hbs title=Nested-example-test
-{{#> list-group list-group--id="nested-example-test" list-group--attribute='role="list" aria-label="testing the label for parent group"'}}
-  {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+{{#> list-group list-group--id="nested-example-test"}}
+  {{#> list-group-list list-group-list--modifier="pf-m-parent" list-group-list--attribute=(concat 'aria-label="example parent component"')}}
     {{#> list-group-list-item}}
-      {{#> list-group list-group--id=(concat list-group--id '-subgroup1') list-group--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
-        {{#> list-group-label list-group-label--id=(concat list-group--id '-label')}}
+      {{#> list-group list-group--modifier="pf-m-toolbar" list-group--id=(concat list-group--id '-subgroup1') list-group--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+        <!-- {{#> list-group-label}}
           System type tags
-        {{/list-group-label}}
-        {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+        {{/list-group-label}} -->
+        {{#> list-group-list list-group-list--modifier="" list-group-list--IsLabelledby="true"}}
+          {{#> list-group-label list-group-label--type="li"}}
+            System type tags
+          {{/list-group-label}}
           {{> list-group-demo-content-chips}}
         {{/list-group-list}}
       {{/list-group}}
     {{/list-group-list-item}}
     {{#> list-group-list-item}}
-      {{#> list-group list-group--id=(concat list-group--id '-subgroup2') list-group--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}    {{#> list-group-label list-group-label--id=(concat list-group--id '-label')}}
+      {{#> list-group list-group--modifier="pf-m-toolbar" list-group--id=(concat list-group--id '-subgroup2') list-group--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+        <!-- {{#> list-group-label}}
           Cluster type chips
-        {{/list-group-label}}
-        {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+        {{/list-group-label}} -->
+        {{#> list-group-list list-group-list--modifier="" list-group-list--IsLabelledby="true"}}
+          {{#> list-group-label list-group-label--type="li"}}
+            Cluster type chips
+          {{/list-group-label}}
           {{> list-group-demo-content-chips list-group-demo-content-chips--IsShort="true"}}
+          {{> list-group-close list-group-close--type="li" list-group-close--attribute=''}}
         {{/list-group-list}}
       {{/list-group}}
     {{/list-group-list-item}}
