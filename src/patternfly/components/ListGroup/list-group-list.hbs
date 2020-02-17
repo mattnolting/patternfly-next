@@ -1,9 +1,12 @@
-<{{#if list-group-list--type}}{{list-group-list--type}}{{else}}ul{{/if}} class="pf-c-list-group__list{{#if list-group-list--modifier}} {{list-group-list--modifier}}{{/if}}"
+<{{#if list-group-list--IsDiv}}div{{else}}ul{{/if}} class="pf-c-list-group__list{{#if list-group-list--modifier}} {{list-group-list--modifier}}{{/if}}"
   {{#if list-group-list--attribute}}
     {{{list-group-list--attribute}}}
+  {{/if}}
+  {{#if list-group-list--IsDiv}}
+    role="list"
   {{/if}}
   {{#if list-group-list--IsLabelledby}}
     aria-labelledby="{{{list-group--id}}}-label"
   {{/if}}>
   {{> @partial-block}}
-</{{#if list-group-list--type}}{{list-group-list--type}}{{else}}ul{{/if}}>
+</{{#if list-group-list--IsDiv}}div{{else}}ul{{/if}}>

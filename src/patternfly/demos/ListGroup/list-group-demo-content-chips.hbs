@@ -1,37 +1,37 @@
-{{#> list-group-list-item}}
+{{#> list-group-item newcontext}}
   {{> list-group-chip list-group-chip--text="Blue chip" list-group-chip--number="1"}}
-{{/list-group-list-item}}
-{{#> list-group-list-item}}
+{{/list-group-item}}
+{{#> list-group-item newcontext}}
   {{> list-group-chip list-group-chip--text="Green chip" list-group-chip--number="2"}}
-{{/list-group-list-item}}
-{{#> list-group-list-item}}
-  {{> list-group-chip list-group-chip--text="Red chip" list-group-chip--number="3"}}
-{{/list-group-list-item}}
+{{/list-group-item}}
 
 {{#unless list-group-demo-content-chips--IsShort}}
-  {{#> list-group-list-item}}
+  {{#> list-group-item newcontext}}
+    {{> list-group-chip list-group-chip--text="Red chip" list-group-chip--number="3"}}
+  {{/list-group-item}}
+  {{#> list-group-item newcontext}}
     {{> list-group-chip list-group-chip--text="Orange chip" list-group-chip--number="4"}}
-  {{/list-group-list-item}}
-  {{#> list-group-list-item}}
+  {{/list-group-item}}
+  {{#> list-group-item newcontext}}
     {{> list-group-chip list-group-chip--text="Yellow chip" list-group-chip--number="5"}}
-  {{/list-group-list-item}}
+  {{/list-group-item}}
 
   {{#if list-group-demo-content-chips--IsLong}}
-    {{#> list-group-list-item}}
+    {{#> list-group-item newcontext}}
       {{> list-group-chip list-group-chip--text="Pink chip" list-group-chip--number="6"}}
-    {{/list-group-list-item}}
-    {{#> list-group-list-item}}
+    {{/list-group-item}}
+    {{#> list-group-item newcontext}}
       {{> list-group-chip list-group-chip--text="Gray chip" list-group-chip--number="7"}}
-    {{/list-group-list-item}}
-    {{#> list-group-list-item}}
+    {{/list-group-item}}
+    {{#> list-group-item newcontext}}
       {{> list-group-chip list-group-chip--text="Purple chip" list-group-chip--number="8"}}
-    {{/list-group-list-item}}
-    {{#> list-group-list-item}}
+    {{/list-group-item}}
+    {{#> list-group-item newcontext}}
       {{> list-group-chip list-group-chip--text="Magenta chip" list-group-chip--number="9"}}
-    {{/list-group-list-item}}
-    {{#> list-group-list-item}}
+    {{/list-group-item}}
+    {{#> list-group-item newcontext}}
       {{> list-group-chip list-group-chip--text="Umber chip" list-group-chip--number="10"}}
-    {{/list-group-list-item}}
+    {{/list-group-item}}
   {{/if}}
 {{/unless}}
 

@@ -1,0 +1,13 @@
+<{{#if list-group-item--IsDiv}}div{{else}}li{{/if}} class="pf-c-list-group__item{{#if list-group-item--IsLabel}} pf-m-label{{/if}}{{#if list-group-list-list-item--modifier}} {{{list-group-item--modifier}}}{{/if}}"
+  {{#if list-group-item--IsLabel}}
+    aria-hidden="true"
+    id="{{{list-group--id}}}-label"
+  {{/if}}
+  {{#if list-group-item--IsDiv}}
+    role="listitem"
+  {{/if}}
+  {{#if list-group-item--attribute}}
+    {{{list-group-item--attribute}}}
+  {{/if}}>
+  {{> @partial-block}}
+</{{#if list-group-item--IsDiv}}div{{else}}li{{/if}}>

@@ -10,15 +10,69 @@ import './ListGroup.css'
 
 A `.pf-c-list-group__label` can placed adjacent to a `.pf-c-list-group__list` or within a `.pf-c-list-group__list` as a list item.
 
+## Core elements
+
+`.pf-c-list-group` two container elements elements and other elements. `.pf-c-list-group__main`, `.pf-c-list-group__actions` and `.pf-c-list-group__actions`
+
+`.pf-c-list-group__label` can be outside of or nested within a `.pf-c-list-group__list`. If nested within `.pf-c-list-group__list`, the subsequent `__list-item`s will wrap.
+
+### Basic
 ```hbs title=Basic
 {{#> list-group list-group--id="basic-example"}}
   {{#> list-group-label}}
-    Tags
+    System count
   {{/list-group-label}}
-  {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
-    <!-- {{> list-group-content-items-1}} -->
-    {{> list-group-demo-content-chips}}
-  {{/list-group-list}}
+  {{#> list-group-main}}
+    {{#> list-group-list list-group-list--IsLabelledby="true"}}
+      {{> list-group-demo-content-labels list-group-demo-content-labels--IsLong="true"}}
+    {{/list-group-list}}
+  {{/list-group-main}}
+  {{#> list-group-actions}}
+    {{> list-group-close}}
+  {{/list-group-actions}}
+{{/list-group}}
+```
+
+<!-- ```hbs title=Basic
+{{#> list-group list-group--id="basic-example"}}
+  {{#> list-group-main}}
+    {{#> list-group-label}}
+      System count
+    {{/list-group-label}}
+    {{#> list-group-list list-group-list--IsLabelledby="true"}}
+      {{> list-group-demo-content-labels}}
+    {{/list-group-list}}
+  {{/list-group-main}}
+{{/list-group}}
+``` -->
+
+```hbs title=Inline-modifier
+{{#> list-group list-group--id="inline-modifier-example"}}
+  {{#> list-group-main list-group-main--modifier="pf-m-inline"}}
+    {{#> list-group-label}}
+      System count
+    {{/list-group-label}}
+    {{#> list-group-list-container}}
+      {{#> list-group-list list-group-list--IsLabelledby="true"}}
+        {{> list-group-demo-content-labels}}
+      {{/list-group-list}}
+      {{> list-group-close}}
+    {{/list-group-list-container}}
+  {{/list-group-main}}
+{{/list-group}}
+```
+
+### Basic label as li
+```hbs title=Basic-label-as-li
+{{#> list-group list-group--id="basic-as-li-example"}}
+  {{#> list-group-main list-group-main--modifier="pf-m-inline-on-lg pf-m-stack-on-2xl"}}
+    {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+      {{#> list-group-label list-group-label--type="li"}}
+        Tags
+      {{/list-group-label}}
+      {{> list-group-demo-content-chips}}
+    {{/list-group-list}}
+  {{/list-group-main}}
 {{/list-group}}
 ```
 
@@ -26,47 +80,71 @@ A `.pf-c-list-group__label` can placed adjacent to a `.pf-c-list-group__list` or
 
 ```hbs title=Nested-example-test
 {{#> list-group list-group--id="nested-example-test"}}
-  {{#> list-group-list list-group-list--modifier="pf-m-parent" list-group-list--attribute=(concat 'aria-label="example parent component"')}}
-    {{#> list-group-list-item}}
-      {{#> list-group list-group--modifier="pf-m-toolbar" list-group--id=(concat list-group--id '-subgroup1') list-group--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
-        <!-- {{#> list-group-label}}
-          System type tags
-        {{/list-group-label}} -->
-        {{#> list-group-list list-group-list--modifier="" list-group-list--IsLabelledby="true"}}
-          {{#> list-group-label list-group-label--type="li"}}
-            System type tags
-          {{/list-group-label}}
-          {{> list-group-demo-content-chips}}
-        {{/list-group-list}}
-      {{/list-group}}
-    {{/list-group-list-item}}
-    {{#> list-group-list-item}}
-      {{#> list-group list-group--modifier="pf-m-toolbar" list-group--id=(concat list-group--id '-subgroup2') list-group--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
-        <!-- {{#> list-group-label}}
-          Cluster type chips
-        {{/list-group-label}} -->
-        {{#> list-group-list list-group-list--modifier="" list-group-list--IsLabelledby="true"}}
-          {{#> list-group-label list-group-label--type="li"}}
-            Cluster type chips
-          {{/list-group-label}}
-          {{> list-group-demo-content-chips list-group-demo-content-chips--IsShort="true"}}
-          {{> list-group-close list-group-close--type="li" list-group-close--attribute=''}}
-        {{/list-group-list}}
-      {{/list-group}}
-    {{/list-group-list-item}}
-  {{/list-group-list}}
+  {{#> list-group-main list-group-main--modifier=""}}
+    {{#> list-group-list list-group-list--modifier="pf-m-parent pf-m-2-col" list-group-list--attribute=(concat 'aria-label="example parent component"')}}
+      {{#> list-group-item}}
+        {{#> list-group list-group--modifier="pf-m-toolbars" list-group--id=(concat list-group--id '-subgroup1') list-group--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+          {{#> list-group-main}}
+            {{#> list-group-list list-group-list--modifier="" list-group-list--IsLabelledby="true"}}
+              {{#> list-group-label list-group-label--type="li"}}
+                System type tags
+              {{/list-group-label}}
+              {{> list-group-demo-content-chips list-group-demo-content-chips--IsShort="true"}}
+            {{/list-group-list}}
+          {{/list-group-main}}
+          {{> list-group-close list-group-close--attribute=''}}
+        {{/list-group}}
+      {{/list-group-item}}
+      {{#> list-group-item}}
+        {{#> list-group list-group--modifier="pf-m-toolbars" list-group--id=(concat list-group--id '-subgroup2') list-group--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+          {{#> list-group-main}}
+            {{#> list-group-label}}
+              Cluster type chips
+            {{/list-group-label}}
+            {{#> list-group-list list-group-list--modifier="" list-group-list--IsLabelledby="true"}}
+              {{> list-group-demo-content-chips list-group-demo-content-chips--IsLong="true"}}
+            {{/list-group-list}}
+          {{/list-group-main}}
+          {{> list-group-close list-group-close--attribute=''}}
+        {{/list-group}}
+      {{/list-group-item}}
+    {{/list-group-list}}
+  {{/list-group-main}}
 {{/list-group}}
 ```
 
 If `.pf-c-list-group__label` is applied to a list item, the following list items will wrap around it.
 
-```hbs title=Basic-label-as-list-item
-{{#> list-group list-group--id="label-list-item-example"}}
-  {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
-    {{#> list-group-list-item list-group-list-item--IsLabel="true"}}
-      Tags
-    {{/list-group-list-item}}
-    {{> list-group-content-items-1}}
+## Nested-toolbar-groups
+```hbs title=Nested-toolbar-groups
+{{#> list-group list-group--id="basic-example"}}
+  {{#> list-group-list list-group-list--attribute='aria-label="Applied filters"'}}
+    {{#> list-group-item}}
+      {{#> list-group list-group--id=(concat list-group--id '-subgroup-1') list-group--modifier="pf-m-toolbar" list-group--attribute=''}}
+        {{#> list-group-main}}
+          {{#> list-group-label}}
+            Tags
+          {{/list-group-label}}
+          {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+            {{> list-group-demo-content-chips list-group-demo-content-chips--IsShort="true"}}
+          {{/list-group-list}}
+        {{/list-group-main}}
+        {{> list-group-close}}
+      {{/list-group}}
+    {{/list-group-item}}
+    {{#> list-group-item}}
+      {{#> list-group list-group--id=(concat list-group--id '-subgroup-2') list-group--modifier="pf-m-toolbar" list-group--attribute=''}}
+        {{#> list-group-main}}
+          {{#> list-group-label}}
+            Chips in a group
+          {{/list-group-label}}
+          {{#> list-group-list list-group-list--attribute=(concat 'aria-labelledby="' list-group--id '-label"')}}
+            {{> list-group-demo-content-chips}}
+          {{/list-group-list}}
+        {{/list-group-main}}
+        {{> list-group-close}}
+      {{/list-group}}
+    {{/list-group-item}}
   {{/list-group-list}}
 {{/list-group}}
 ```
@@ -183,18 +261,18 @@ A stacked layout can be achieved with by applying `.pf-m-column` to `.pf-c-list-
 
   {{#> list-group list-group--id=(concat list-group--parent-id '-nested-list3') list-group--attribute='' list-group--modifier=''}}
     {{#> list-group-list list-group-list--modifier="pf-m-toolbar"}}
-      {{#> list-group-list-item list-group-list-item--IsLabel="true" list-group-list-item--id=(concat list-group-id '-label3')}}
+      {{#> list-group-item list-group-item--IsLabel="true" list-group-item--id=(concat list-group-id '-label3')}}
         Tags
-      {{/list-group-list-item}}
+      {{/list-group-item}}
       {{> list-group-content-items-1}}
     {{/list-group-list}}
   {{/list-group}}
 
   {{#> list-group list-group--id=(concat list-group--parent-id '-nested-list4') list-group--attribute='' list-group--modifier=''}}
     {{#> list-group-list list-group-list--modifier="pf-m-toolbar"}}
-      {{#> list-group-list-item list-group-list-item--IsLabel="true" list-group-list-item--id=(concat list-group-id '-label4')}}
+      {{#> list-group-item list-group-item--IsLabel="true" list-group-item--id=(concat list-group-id '-label4')}}
         Labels
-      {{/list-group-list-item}}
+      {{/list-group-item}}
       {{> list-group-content-items-1}}
     {{/list-group-list}}
   {{/list-group}}
@@ -209,18 +287,18 @@ A stacked layout can be achieved with by applying `.pf-m-column` to `.pf-c-list-
 
   {{#> list-group list-group--id=(concat list-group--parent-id '-sub-group1') list-group--attribute='' list-group--modifier=''}}
     {{#> list-group-list}}
-      {{#> list-group-list-item list-group-list-item--IsLabel="true" list-group-list-item--id=(concat list-group-id '-label1')}}
+      {{#> list-group-item list-group-item--IsLabel="true" list-group-item--id=(concat list-group-id '-label1')}}
         Label, this is hidden from assistive technologies
-      {{/list-group-list-item}}
+      {{/list-group-item}}
       {{> list-group-content-items-1}}
     {{/list-group-list}}
   {{/list-group}}
 
   {{#> list-group list-group--id=(concat list-group--parent-id '-sub-group2') list-group--attribute='' list-group--modifier=''}}
     {{#> list-group-list}}
-      {{#> list-group-list-item list-group-list-item--IsLabel="true" list-group-list-item--id=(concat list-group-id '-label2')}}
+      {{#> list-group-item list-group-item--IsLabel="true" list-group-item--id=(concat list-group-id '-label2')}}
         Label for group 2, this is hidden from assistive technologies
-      {{/list-group-list-item}}
+      {{/list-group-item}}
       {{> list-group-content-items-2}}
     {{/list-group-list}}
   {{/list-group}}
@@ -238,9 +316,9 @@ A stacked layout can be achieved with by applying `.pf-m-column` to `.pf-c-list-
       Nested group one label
     {{/list-group-label}} -->
     {{#> list-group-list}}
-      {{#> list-group-list-item list-group-list-item--IsLabel="true" list-group-list-item--id=(concat list-group-id '-label1')}}
+      {{#> list-group-item list-group-item--IsLabel="true" list-group-item--id=(concat list-group-id '-label1')}}
         Label, this is hidden from assistive technologies
-      {{/list-group-list-item}}
+      {{/list-group-item}}
       {{> list-group-content-items-1}}
     {{/list-group-list}}
   {{/list-group}}
@@ -250,9 +328,9 @@ A stacked layout can be achieved with by applying `.pf-m-column` to `.pf-c-list-
       Nested group two label
     {{/list-group-label}} -->
     {{#> list-group-list}}
-      {{#> list-group-list-item list-group-list-item--IsLabel="true" list-group-list-item--id=(concat list-group-id '-label2')}}
+      {{#> list-group-item list-group-item--IsLabel="true" list-group-item--id=(concat list-group-id '-label2')}}
         Label for group 2, this is hidden from assistive technologies
-      {{/list-group-list-item}}
+      {{/list-group-item}}
       {{> list-group-content-items-2}}
     {{/list-group-list}}
   {{/list-group}}

@@ -2,6 +2,10 @@
   {{!-- {{#if list-group--id}}
     id="{{list-group--id}}"
   {{/if}} --}}
+  {{#if list-group--IsListItem}}
+    role="listitem"
+    aria-labelledby="{{{list-group--id}}}-label"
+  {{/if}}
   {{#if list-group--attribute}}
     {{{list-group--attribute}}}
   {{/if}}>

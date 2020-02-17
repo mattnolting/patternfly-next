@@ -1,5 +1,5 @@
 ---
-title: Drawer
+title: ListGroup
 section: demos
 ---
 
@@ -7,17 +7,39 @@ section: demos
 
 ### Badge list group
 
-```hbs title=Badge-list-group
-{{> list-group-border-test}}
-{{#> list-group list-group--id="badge-list-group-example"}}
-  {{#> list-group-label}}
-    Tags
-  {{/list-group-label}}
-  {{#> list-group-list list-group-list--IsLabelledBy="true"}}
-    {{> list-group-demo-content-badges list-group-demo-content-badges--IsLong="true" badge--modifier="pf-m-unread"}}
+```hbs title=Flex-layout-in-nested-list-groups
+{{#> list-group list-group--id="flex-layout-in-nested-list-groups"}}
+  {{#> list-group-list list-group-list--attribute='aria-label="example parent component"' list-group-list--IsDiv="true"}}
+    {{#> l-flex}}
+      {{#> l-flex-item}}
+        {{#> list-group list-group--id=(concat list-group--id '-subgroup1') list-group--modifier="pf-m-toolbars" list-group-item--IsListItem="true"}}
+          {{#> list-group-main}}
+            {{#> list-group-label}}
+              System type tags
+            {{/list-group-label}}
+            {{#> list-group-list list-group-list--modifier="" list-group-list--IsLabelledby="true" list-group-list--type="ul"}}
+              {{> list-group-demo-content-chips list-group-demo-content-chips--IsShort="true"}}
+            {{/list-group-list}}
+          {{/list-group-main}}
+          {{> list-group-close list-group-close--attribute=''}}
+        {{/list-group}}
+      {{/l-flex-item}}
+      {{#> l-flex-item}}
+        {{#> list-group list-group--modifier="pf-m-toolbars" list-group--id=(concat list-group--id '-subgroup2') list-group-item--IsListItem="true"}}
+          {{#> list-group-main}}
+            {{#> list-group-label}}
+              Cluster type chips
+            {{/list-group-label}}
+            {{#> list-group-list list-group-list--modifier="" list-group-list--IsLabelledby="true" list-group-list--type="ul"}}
+              {{> list-group-demo-content-chips list-group-demo-content-chips--IsLong="true" list-group-item--type="li"}}
+            {{/list-group-list}}
+          {{/list-group-main}}
+          {{> list-group-close list-group-close--attribute=''}}
+        {{/list-group}}
+      {{/l-flex-item}}
+    {{/l-flex}}
   {{/list-group-list}}
 {{/list-group}}
-{{> list-group-border-test}}
 ```
 
 ### Chip list group
@@ -97,9 +119,9 @@ The label will wrap with other list items
 {{> list-group-border-test}}
 {{#> list-group list-group--id="badge-list-label-as-list-item-example"}}
   {{#> list-group-list list-group-list--IsLabelledBy="true"}}
-    {{#> list-group-list-item list-group-list-item--IsLabel="true"}}
+    {{#> list-group-item list-group-item--IsLabel="true"}}
       Tags
-    {{/list-group-list-item}}
+    {{/list-group-item}}
     {{> list-group-demo-content-badges list-group-demo-content-badges--IsLong="true" badge--modifier="pf-m-unread"}}
   {{/list-group-list}}
 {{/list-group}}

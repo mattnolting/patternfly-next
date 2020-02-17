@@ -1,11 +1,11 @@
-<li class="pf-c-list-group__list-item{{#if list-group-list-item--IsLabel}} pf-m-label{{/if}}{{#if list-group-list-list-item--modifier}} {{{list-group-list-item--modifier}}}{{/if}}"
-  {{#if list-group-list-item--IsLabel}}
+<li class="pf-c-list-group__list-item{{#if list-group-item--IsLabel}} pf-m-label{{/if}}{{#if list-group-list-list-item--modifier}} {{{list-group-item--modifier}}}{{/if}}"
+  {{#if list-group-item--IsLabel}}
     aria-hidden="true"
     role="presentation"
     id="{{{list-group--id}}}-label"
   {{/if}}
-  {{#if list-group-list-item--attribute}}
-    {{{list-group-list-item--attribute}}}
+  {{#if list-group-item--attribute}}
+    {{{list-group-item--attribute}}}
   {{/if}}>
   {{> @partial-block}}
 </li>

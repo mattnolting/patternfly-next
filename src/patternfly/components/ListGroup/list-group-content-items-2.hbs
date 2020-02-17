@@ -1,36 +1,36 @@
-{{#> list-group-list-item}}
+{{#> list-group-item}}
   key: common
-{{/list-group-list-item}}
-{{#> list-group-list-item}}
+{{/list-group-item}}
+{{#> list-group-item}}
   key: server
-{{/list-group-list-item}}
+{{/list-group-item}}
 
 {{#unless list-group-content-items-2--IsShort}}
-  {{#> list-group-list-item}}
+  {{#> list-group-item}}
     key: devel
-  {{/list-group-list-item}}
-  {{#> list-group-list-item}}
+  {{/list-group-item}}
+  {{#> list-group-item}}
     key: minimal
-  {{/list-group-list-item}}
+  {{/list-group-item}}
 
   {{#if list-group-content-items-2--IsLong}}
-    {{#> list-group-list-item}}
+    {{#> list-group-item}}
       key: prod
-    {{/list-group-list-item}}
-    {{#> list-group-list-item}}
+    {{/list-group-item}}
+    {{#> list-group-item}}
       key: beta
-    {{/list-group-list-item}}
-    {{#> list-group-list-item}}
+    {{/list-group-item}}
+    {{#> list-group-item}}
       key: cluster
-    {{/list-group-list-item}}
-    {{#> list-group-list-item}}
+    {{/list-group-item}}
+    {{#> list-group-item}}
       key: provisioned
-    {{/list-group-list-item}}
-    {{#> list-group-list-item}}
+    {{/list-group-item}}
+    {{#> list-group-item}}
       key: qa
-    {{/list-group-list-item}}
-    {{#> list-group-list-item}}
+    {{/list-group-item}}
+    {{#> list-group-item}}
       key: approved
-    {{/list-group-list-item}}
+    {{/list-group-item}}
   {{/if}}
 {{/unless}}
