@@ -64,6 +64,28 @@ cssPrefix: pf-c-card
 {{/card}}
 ```
 
+```hbs title=With-divider
+{{#> card card--id="card-with-divider-example"}}
+  {{#> card-head}}
+    {{#> card-head-main}}
+      <img src="/assets/images/pf_logo.svg" width="300px" alt="Logo">
+    {{/card-head-main}}
+    {{#> card-actions}}
+      {{#> dropdown id=(concat card--id "-dropdown-kebab-right-aligned") dropdown--IsActionMenu="true" dropdown-toggle--modifier="pf-m-plain" dropdown--HasKebabIcon="true" aria-label="Actions"}}
+      {{/dropdown}}
+      <input type="checkbox" id="{{card--id}}-check" name="{{card--id}}-check" aria-labelledby="{{card--id}}-check-label">
+    {{/card-actions}}
+  {{/card-head}}
+  {{> divider}}
+  {{#> card-body}}
+    Body
+  {{/card-body}}
+  {{#> card-footer}}
+    Footer
+  {{/card-footer}}
+{{/card}}
+```
+
 ```hbs title=With-only-actions-in-head-(no-header/footer)
 {{#> card card--id="card-action-example-3"}}
   {{#> card-head}}
