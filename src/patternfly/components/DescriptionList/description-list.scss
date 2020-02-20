@@ -10,35 +10,26 @@ $pf-c-description-list--breakpoint-map: build-breakpoint-map("base", "sm", "md",
   --pf-c-description-list__list--GridTemplateColumns: var(--pf-c-description-list__list--GridColumnWidth);
 
   // Inline
-  // --pf-c-description-list__list--m-inline__group--Display: grid;
   --pf-c-description-list__list--m-inline__group--GridTemplateColumns: 1fr 1fr;
-
-  // --pf-c-description-list__list--m-inline__group--xl--GridTemplateColumns: 1fr 1.5fr;
   --pf-c-description-list__list--m-inline__group--Display: grid;
-  --pf-c-description-list__list--m-inline__term--GridColumn: 1;
   --pf-c-description-list__list--m-inline__description--GridColumn: 2;
   --pf-c-description-list__list--m-inline--m-auto-fill--GridTemplateColumns: repeat(auto-fill, minmax(320px, auto));
   --pf-c-description-list__list--m-auto-fill--GridTemplateColumns: repeat(auto-fill, minmax(220px, auto));
   --pf-c-description-list__list--m-auto-fill--xl--GridTemplateColumns: repeat(auto-fill, minmax(280px, auto));
 
-  // Stack
-  --pf-c-description-list__list--m-stack--GridTemplateColumns: var(--pf-c-description-list__list--GridColumnWidth);
-
   // Group
   --pf-c-description-list__group--Display: grid;
   --pf-c-description-list__group--ColumnGap: var(--pf-global--gutter);
-  --pf-c-description-list__group--RowGap: var(--pf-global-spacer--sm);
+  --pf-c-description-list__group--RowGap: var(--pf-global--spacer--xs);
   --pf-c-description-list__group--GridTemplateColumns: 1fr;
 
   // Term
-  --pf-c-description-list__term--GridColumn: 1;
   --pf-c-description-list__term--FontWeight: var(--pf-global--FontWeight--bold);
 
   // Description
   --pf-c-description-list__description--GridColumn: 1;
 
   @media screen and (min-width: $pf-global--breakpoint--xl) {
-    // --pf-c-description-list__list--m-inline__group--GridTemplateColumns: var(--pf-c-description-list__list--m-inline__group--xl--GridTemplateColumns);
     --pf-c-description-list__list--m-auto-fill--GridTemplateColumns: var(--pf-c-description-list__list--m-auto-fill--xl--GridTemplateColumns);
   }
 
@@ -59,8 +50,9 @@ $pf-c-description-list--breakpoint-map: build-breakpoint-map("base", "sm", "md",
   display: var(--pf-c-description-list__group--Display);
   grid-template-columns: var(--pf-c-description-list__group--GridTemplateColumns);
   align-content: start;
-  column-gap: var(--pf-c-description-list__group--ColumnGap);
   grid-column: var(--pf-c-description-list__group--GridColumn);
+  column-gap: var(--pf-c-description-list__group--ColumnGap);
+  row-gap: var(--pf-c-description-list__group--RowGap);
 }
 
 // Term
@@ -95,14 +87,10 @@ $pf-c-description-list--breakpoint-map: build-breakpoint-map("base", "sm", "md",
         grid-template-columns: repeat(2, var(--pf-c-description-list__list--GridColumnWidth));
       }
 
-      &.pf-m-3-col#{$breakpoint-name} {
-        grid-template-columns: repeat(3, var(--pf-c-description-list__list--GridColumnWidth));
-      }
-
       &.pf-m-auto-fill#{$breakpoint-name} {
         grid-template-columns: var(--pf-c-description-list__list--m-auto-fill--GridTemplateColumns);
 
-        &.pf-m-inline {
+        &.pf-m-inline#{$breakpoint-name} {
           grid-template-columns: var(--pf-c-description-list__list--m-inline--m-auto-fill--GridTemplateColumns);
         }
       }
@@ -113,56 +101,3 @@ $pf-c-description-list--breakpoint-map: build-breakpoint-map("base", "sm", "md",
     }
   }
 }
-
-// @supports (grid-template-columns: subgrid) {
-//   .pf-c-description-list__list {
-//     --pf-c-description-list__group--GridTemplateColumns: max-content 1fr;
-//     --pf-c-description-list__group--Display: contents;
-//     --pf-c-description-list__term--GridColumn: auto;
-//     --pf-c-description-list__description--GridColumn: auto;
-
-//     grid-template-columns: 1fr;
-
-//     --pf-c-description-list__term--GridColumn: 1;
-//     --pf-c-description-list__description--GridColumn: 1;
-
-//     grid-template-columns: 1fr;
-
-//     &.pf-m-2-col {
-//       grid-template-columns: repeat(2, 1fr);
-//     }
-
-//     &.pf-m-3-col {
-//       grid-template-columns: repeat(3, 1fr);
-//     }
-
-//     &.pf-m-auto-fill {
-//       grid-template-columns: repeat(auto-fill, minmax(220px, auto));
-//     }
-//   }
-
-//   .pf-c-description-list__list.pf-m-inline {
-//     grid-template-columns: max-content auto;
-
-//     &.pf-m-2-col {
-//       grid-template-columns: repeat(2, max-content 1fr);
-//     }
-
-//     &.pf-m-3-col {
-//       grid-template-columns: repeat(3, max-content 1fr);
-//     }
-
-//     &.pf-m-auto-fill {
-//       grid-template-columns: repeat(auto-fill, minmax(160px, auto));
-//     }
-
-//     .pf-c-description-list__group {
-//       grid-column: span 2;
-//     }
-//   }
-
-//   .pf-c-description-list__group {
-//     display: grid;
-//     grid-template-columns: subgrid;
-//   }
-// }
