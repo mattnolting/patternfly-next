@@ -17,6 +17,44 @@ A `.pf-c-list-group__label` can placed adjacent to a `.pf-c-list-group__list` or
 `.pf-c-list-group__label` can be outside of or nested within a `.pf-c-list-group__list`. If nested within `.pf-c-list-group__list`, the subsequent `__list-item`s will wrap.
 
 ### Basic
+```hbs title=Testing-example
+{{#> list-group list-group--id="testing-example"}}
+  {{#> list-group-list list-group-list--modifier="pf-m-parent pf-m-stack" list-group-list--IsLabelledby="true"}}
+    {{#> list-group-item}}
+      {{#> list-group list-group--id="basic-example"}}
+        {{#> list-group-label}}
+          System count
+        {{/list-group-label}}
+        {{#> list-group-main}}
+          {{#> list-group-list list-group-list--modifier="" list-group-list--IsLabelledby="true"}}
+            {{> list-group-demo-content-labels list-group-demo-content-labels--IsShort="true"}}
+          {{/list-group-list}}
+          {{#> list-group-actions}}
+            {{> list-group-close}}
+          {{/list-group-actions}}
+        {{/list-group-main}}
+      {{/list-group}}
+    {{/list-group-item}}
+    {{#> list-group-item}}
+      {{#> list-group list-group--id="basic-example"}}
+        {{#> list-group-label}}
+          Environment
+        {{/list-group-label}}
+        {{#> list-group-main}}
+          {{#> list-group-list list-group-list--modifier="" list-group-list--IsLabelledby="true"}}
+            {{> list-group-demo-content-labels list-group-demo-content-labels--IsLong="true"}}
+          {{/list-group-list}}
+          {{#> list-group-actions}}
+            {{> list-group-close}}
+          {{/list-group-actions}}
+        {{/list-group-main}}
+      {{/list-group}}
+    {{/list-group-item}}
+  {{/list-group-list}}
+{{/list-group}}
+```
+
+### Basic
 ```hbs title=Basic
 {{#> list-group list-group--id="basic-example"}}
   {{#> list-group-label}}
@@ -32,19 +70,6 @@ A `.pf-c-list-group__label` can placed adjacent to a `.pf-c-list-group__list` or
   {{/list-group-actions}}
 {{/list-group}}
 ```
-
-<!-- ```hbs title=Basic
-{{#> list-group list-group--id="basic-example"}}
-  {{#> list-group-main}}
-    {{#> list-group-label}}
-      System count
-    {{/list-group-label}}
-    {{#> list-group-list list-group-list--IsLabelledby="true"}}
-      {{> list-group-demo-content-labels}}
-    {{/list-group-list}}
-  {{/list-group-main}}
-{{/list-group}}
-``` -->
 
 ```hbs title=Inline-modifier
 {{#> list-group list-group--id="inline-modifier-example"}}
