@@ -558,3 +558,8 @@ The description list component.
 | Class | Applied to | Outcome |
 | -- | -- | -- |
 | `.pf-c-description-list` | `<div>` |  Initiates a description list. **Required** |
+| `.pf-c-description-list__list` | `<div>` |  Initiates a description list list. |
+| `.pf-c-description-list__group` | `<div>` |  Initiates a description list group. **Required** |
+| `.pf-c-description-list__term` | `<div>` |  Initiates a description list term. |
+| `.pf-c-description-list__description` | `<div>` |  Initiates a description list description. |
+| `.pf-c-description-list__label` | `<div>` |  Initiates a description list label. |
