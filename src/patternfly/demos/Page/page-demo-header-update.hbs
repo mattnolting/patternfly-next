@@ -1,0 +1,151 @@
+{{#> skip-to-content skip-to-content--attribute=(concat 'href="#main-content-' page--id '"')}}
+  Skip to content
+{{/skip-to-content}}
+{{#> page-header}}
+  {{#> data-toolbar data-toolbar--id="data-toolbar-group-types-example"}}
+    {{#> data-toolbar-content}}
+      {{#> data-toolbar-content-section data-toolbar-content-section--modifier="pf-m-nowrap"}}
+        {{#> data-toolbar-item}}
+          {{#> page-header-brand}}
+            {{#> page-header-brand-toggle}}
+              {{#> button button--modifier="pf-m-plain" button--attribute=(concat 'id="' page--id '-nav-toggle" aria-label="Global navigation" aria-expanded="true" aria-controls="' page--id '-primary-nav"')}}
+                <i class="fas fa-bars" aria-hidden="true"></i>
+              {{/button}}
+            {{/page-header-brand-toggle}}
+            {{#> page-header-brand-link page-header-brand-link--href="#"}}
+              {{#> brand brand--attribute='src="/assets/images/PF-Masthead-Logo.svg" alt="PatternFly logo"'}}{{/brand}}
+            {{/page-header-brand-link}}
+          {{/page-header-brand}}
+        {{/data-toolbar-item}}
+        {{#> data-toolbar-item data-toolbar-item--modifier="pf-m-align-right"}}
+          {{#> page-header-tools}}
+              {{#if page-demo-header-update--HasContextSelectorProject}}
+                {{#> data-toolbar-item}}
+                  {{> page-demo-header-context-selector
+                    page-demo-header-context--IsContextSelectorProject="true"
+                    page-demo-header-context-selector--id="project"
+                    }}
+                {{/data-toolbar-item}}
+              {{/if}}
+              {{#if page-demo-header-update--HasContextSelectorApplication}}
+                {{#> data-toolbar-item}}
+                  {{> page-demo-header-context-selector
+                    page-demo-header-context--IsContextSelectorApplication="true"
+                    page-demo-header-context-selector--id="application"
+                    context-selector--IsExpanded="true"
+                    }}
+                {{/data-toolbar-item}}
+              {{/if}}
+              {{#> data-toolbar-item data-toolbar-item--modifier="pf-m-overflow-menu"}}
+                {{#> overflow-menu overflow-menu--id="overflow-menu-persistent-hidden"}}
+                  {{#> overflow-menu-content}}
+                    {{#> overflow-menu-group overflow-menu-group--modifier="pf-m-icon-button-group"}}
+                      {{#> overflow-menu-item}}
+                        {{#> button button--modifier="pf-m-plain" button--attribute='aria-label="Unread notifications"'}}
+                          {{#> notification-badge notification-badge--modifier="pf-m-unread"}}
+                            <i class="fas fa-bell" aria-hidden="true"></i>
+                          {{/notification-badge}}
+                        {{/button}}
+                      {{/overflow-menu-item}}
+                      {{#unless page-demo-header-update--IsMobile}}
+                      {{#unless page-demo-header-update--IsTablet}}
+                        {{#> overflow-menu-item}}
+                          {{#> app-launcher id=(concat page--id '-app-launcher') app-launcher--IsExpandedss="true"}}
+                            {{#> app-launcher-menu app-launcher-menu--modifier="pf-m-align-right"}}
+                              <li>{{#> app-launcher-menu-item app-launcher-menu-item--attribute='href="#"'}}Link{{/app-launcher-menu-item}}</li>
+                              <li>{{#> app-launcher-menu-item app-launcher-menu-item--attribute='href="#"'}}Link 2{{/app-launcher-menu-item}}</li>
+                            {{/app-launcher-menu}}
+                          {{/app-launcher}}
+                        {{/overflow-menu-item}}
+                        {{#> overflow-menu-item}}
+                          {{#> button button--modifier="pf-m-plain" button--attribute='aria-label="Help"'}}
+                            <i class="fas fa-question-circle" aria-hidden="true"></i>
+                          {{/button}}
+                        {{/overflow-menu-item}}
+                        {{#> overflow-menu-item}}
+                          {{#> dropdown
+                            id="dropdown-kebab-expanded"
+                            dropdown--IsActionMenu="true"
+                            dropdown--IsExpanded="true"
+                            dropdown-toggle--modifier="pf-m-plain"
+                            dropdown-menu--modifier="pf-m-align-right"
+                            aria-label="Actions"
+                            }}
+                              <i class="fas fa-cog" aria-hidden="true"></i>
+                          {{/dropdown}}
+                        {{/overflow-menu-item}}
+                      {{/unless}}
+                      {{/unless}}
+                    {{/overflow-menu-group}}
+                  {{/overflow-menu-content}}
+                  {{#if page-demo-header-update--overflow-menu--IsActive}}
+                    {{#> overflow-menu-control
+                      dropdown-menu--modifier="pf-m-align-right"
+                      overflow-menu-button--aria-label="Dropdown for persistent example"
+                      overflow-menu-control-dropdown-menu--type="div"
+                      }}
+                      {{#> dropdown-group}}
+                        <div class="pf-c-dropdown__info" id="{{page--id}}-info" aria-hidden="true">
+                          <div class="pf-c-dropdown__info-group">
+                            <div class="pf-c-dropdown__info-title">Username:</div>
+                            <div class="pf-c-dropdown__info-text">mshaksho@redhat.com</div>
+                          </div>
+                          <div class="pf-c-dropdown__info-group">
+                            <div class="pf-c-dropdown__info-title">Account number:</div>
+                            <div class="pf-c-dropdown__info-text">123456789</div>
+                          </div>
+                        </div>
+                        {{#> dropdown-separator dropdown-separator--IsHr="true"}}{{/dropdown-separator}}
+                        <ul aria-describedby="{{page--id}}-info">
+                          {{#> overflow-menu-dropdown-item}}
+                            My profile
+                          {{/overflow-menu-dropdown-item}}
+                          {{#> overflow-menu-dropdown-item}}
+                            User management
+                          {{/overflow-menu-dropdown-item}}
+                          {{#> overflow-menu-dropdown-item}}
+                            Logout
+                          {{/overflow-menu-dropdown-item}}
+                        </ul>
+                      {{/dropdown-group}}
+                      {{#> dropdown-separator dropdown-separator--IsHr="true"}}{{/dropdown-separator}}
+                      {{#> dropdown-group}}
+                        <ul>
+                          {{#> overflow-menu-dropdown-item}}
+                            Settings
+                          {{/overflow-menu-dropdown-item}}
+                          {{#> overflow-menu-dropdown-item}}
+                            Help
+                          {{/overflow-menu-dropdown-item}}
+                          {{#> overflow-menu-dropdown-item}}
+                            Application launcher
+                          {{/overflow-menu-dropdown-item}}
+                        </ul>
+                      {{/dropdown-group}}
+                    {{/overflow-menu-control}}
+                  {{/if}}
+                  {{#unless page-demo-header-update--IsMobile}}
+                    {{#> overflow-menu-item}}
+                      {{#> page-header-profile}}
+                        {{#> dropdown id=(concat page--id '-dropdown') dropdown-toggle--modifier="pf-m-plain" dropdown--IsCustom="true"}}
+                          {{#> dropdown-toggle}}
+                            {{#unless page-demo-header-update--IsTablet}}
+                              {{#> dropdown-toggle-text}}
+                                John Smith
+                              {{/dropdown-toggle-text}}
+                              {{> dropdown-toggle-icon}}
+                            {{/unless}}
+                            {{#> avatar avatar--attribute='src="/assets/images/img_avatar.svg" alt="Avatar image"'}}{{/avatar}}
+                          {{/dropdown-toggle}}
+                        {{/dropdown}}
+                      {{/page-header-profile}}
+                    {{/overflow-menu-item}}
+                  {{/unless}}
+              {{/overflow-menu}}
+            {{/data-toolbar-item}}
+          {{/page-header-tools}}
+        {{/data-toolbar-item}}
+      {{/data-toolbar-content-section}}
+    {{/data-toolbar-content}}
+  {{/data-toolbar}}
+{{/page-header}}

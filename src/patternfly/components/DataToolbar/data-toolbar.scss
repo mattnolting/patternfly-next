@@ -366,6 +366,18 @@ $pf-c-data-toolbar--spacer-map: build-spacer-map("none", "sm", "md", "lg");
         margin-left: 0;
       }
 
+      // No wrap
+      .pf-c-data-toolbar__group.pf-m-nowrap#{$breakpoint-name},
+      .pf-c-data-toolbar__content-section.pf-m-nowrap#{$breakpoint-name} {
+        flex-wrap: nowrap;
+      }
+
+      // Wrap
+      .pf-c-data-toolbar__group.pf-m-wrap#{$breakpoint-name},
+      .pf-c-data-toolbar__content-section.pf-m-wrap#{$breakpoint-name} {
+        flex-wrap: wrap;
+      }
+
       // Hidden modifier
       .pf-m-hidden#{$breakpoint-name} {
         display: none;

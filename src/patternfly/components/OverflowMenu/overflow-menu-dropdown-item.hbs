@@ -1,8 +1,12 @@
-<li{{#if overflow-menu-dropdown-item--modifier}} class="{{overflow-menu-dropdown-item--modifier}}"{{/if}}
-  {{#if overflow-menu-dropdown-item--attribute}}
-    {{{overflow-menu-dropdown-item--attribute}}}
+<li {{#if overflow-menu-dropdown-item--li--modifier}}class="{{overflow-menu-dropdown-item--li--modifier}}"{{/if}}
+  {{#if overflow-menu-dropdown-item--li--attribute}}
+    {{{overflow-menu-dropdown-item--li--attribute}}}
   {{/if}}>
-  <{{#if overflow-menu-dropdown-item--IsAnchorLink}}a{{else}}button{{/if}} class="pf-c-dropdown__menu-item{{#if overflow-menu-dropdown-item--modifier}} {{overflow-menu-dropdown-items--modifier}}{{/if}}">
+  {{#if overflow-menu-dropdown-item--IsCustom}}
     {{> @partial-block}}
-  </{{#if overflow-menu-dropdown-item--IsAnchorLink}}a{{else}}button{{/if}}>
+  {{else}}
+    <{{#if overflow-menu-dropdown-item--IsAnchorLink}}a{{else if overflow-menu-dropdown-item--type}}{{overflow-menu-dropdown-item--type}}{{else}}button{{/if}} class="pf-c-dropdown__menu-item{{#if overflow-menu-dropdown-item--modifier}} {{overflow-menu-dropdown-item--modifier}}{{/if}}">
+      {{> @partial-block}}
+    </{{#if overflow-menu-dropdown-item--IsAnchorLink}}a{{else if overflow-menu-dropdown-item--type}}{{overflow-menu-dropdown-item--type}}{{else}}button{{/if}}>
+  {{/if}}
 </li>

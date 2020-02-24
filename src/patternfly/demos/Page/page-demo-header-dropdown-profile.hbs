@@ -1,0 +1,22 @@
+<div class="pf-c-dropdown__info" id="{{page--id}}-info" aria-hidden="true">
+  <div class="pf-c-dropdown__info-group">
+    <div class="pf-c-dropdown__info-title">Username:</div>
+    <div class="pf-c-dropdown__info-text">mshaksho@redhat.com</div>
+  </div>
+  <div class="pf-c-dropdown__info-group">
+    <div class="pf-c-dropdown__info-title">Account number:</div>
+    <div class="pf-c-dropdown__info-text">123456789</div>
+  </div>
+</div>
+{{#> dropdown-separator dropdown-separator--IsHr="true"}}{{/dropdown-separator}}
+<ul aria-describedby="{{page--id}}-info">
+  {{#> overflow-menu-dropdown-item}}
+    My profile
+  {{/overflow-menu-dropdown-item}}
+  {{#> overflow-menu-dropdown-item}}
+    User management
+  {{/overflow-menu-dropdown-item}}
+  {{#> overflow-menu-dropdown-item}}
+    Logout
+  {{/overflow-menu-dropdown-item}}
+</ul>

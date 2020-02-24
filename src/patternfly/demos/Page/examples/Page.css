@@ -1,0 +1,25 @@
+#ws-core-d-page-header-update-mobile-portrait-example,
+#ws-core-d-page-header-update-mobile-landscape-example,
+#ws-core-d-page-header-update-tablet-example,
+#ws-core-d-page-header-update-desktop-example {
+  padding: 0;
+  background: none;
+}
+
+#ws-core-d-page-header-update-mobile-portrait-example {
+  width: 320px;
+}
+
+#ws-core-d-page-header-update-mobile-landscape-example {
+  width: 480px;
+  height: 460px;
+}
+
+#ws-core-d-page-header-update-tablet-example {
+  width: 990px;
+}
+
+#ws-core-d-page-header-update-desktop-example {
+  width: 1550px;
+}
+
