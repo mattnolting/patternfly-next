@@ -167,6 +167,13 @@
   --pf-c-page__main-wizard--BorderTopColor: var(--pf-global--BorderColor--100);
   --pf-c-page__main-wizard--BorderTopWidth: var(--pf-global--BorderWidth--sm);
 
+  // Toolbar
+  --pf-c-page__header-content--c-data-toolbar__content--PaddingRight: 0;
+  --pf-c-page__header-content--c-data-toolbar__content--PaddingLeft: 0;
+
+  // Dropdown
+  --pf-c-page__header-tools--c-dropdown--c-avatar--not--first-child--xl--MarginLeft: var(--pf-global--spacer--md);
+
   // Base
   display: grid;
   height: 100%;
@@ -184,7 +191,6 @@
       "nav main";
   }
 }
-
 
 // Header
 .pf-c-page__header {
@@ -210,6 +216,7 @@
 
 // Brand
 .pf-c-page__header-brand {
+  display: flex;
   grid-column: 1 / 2;
   padding-left: var(--pf-c-page__header-brand--PaddingLeft);
 
@@ -343,8 +350,14 @@
     }
   }
 
-  .pf-c-avatar {
-    margin-left: var(--pf-c-page__header-tools--c-avatar--MarginLeft);
+  .pf-c-dropdown {
+    .pf-c-avatar {
+      --pf-c-dropdown--c-avatar--not--first-child--MarginLeft: 0;
+
+      @media screen and (min-width: $pf-global--breakpoint--xl) {
+        --pf-c-dropdown--c-avatar--not--first-child--MarginLeft: var(--pf-c-page__header-tools--c-dropdown--c-avatar--not--first-child--xl--MarginLeft);
+      }
+    }
   }
 
   @media screen and (min-width: $pf-global--breakpoint--lg) {
@@ -357,6 +370,37 @@
 
   & + & {
     margin-left: var(--pf-c-page__header-tools-group--MarginLeft);
+  }
+}
+
+// Content
+.pf-c-page__header .pf-c-data-toolbar {
+  flex-basis: 100%;
+  grid-column: 1 / 3;
+
+  .pf-c-data-toolbar__content,
+  .pf-c-page__header-tools {
+    --pf-c-page__header-brand--md--PaddingRight: 0;
+    --pf-c-data-toolbar__content--PaddingRight: var(--pf-c-page__header-content--c-data-toolbar__content--PaddingRight);
+    --pf-c-data-toolbar__content--PaddingLeft: var(--pf-c-page__header-content--c-data-toolbar__content--PaddingLeft);
+
+    flex-basis: 100%;
+  }
+
+  .pf-c-page__header-tools {
+    --pf-c-page__header-tools--MarginTop: 0;
+    --pf-c-page__header-tools--MarginBottom: 0;
+  }
+}
+
+.pf-c-page__header-profile {
+  .pf-c-dropdown__toggle-text,
+  .pf-c-dropdown__toggle-icon {
+    display: none;
+
+    @media screen and (min-width: $pf-global--breakpoint--xl) {
+      display: inline-block;
+    }
   }
 }
 

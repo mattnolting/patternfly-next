@@ -4,48 +4,52 @@
   {{#if dropdown-menu--attribute}}
 	  {{{dropdown-menu--attribute}}}
   {{/if}}>
-  <li>
-    {{#if dropdown--HasItemIcons}}
-      {{#> dropdown-menu-item dropdown-menu-item--type="a" dropdown-menu-item--modifier="pf-m-icon" dropdown-menu-item--attribute='href="#"'}}
-        {{#> dropdown-menu-item-icon}}
-          <img src="/assets/images/pf-logo-small.svg" alt="PatternFly logo">
-        {{/dropdown-menu-item-icon}}
-        Link
+  {{#if dropdown-menu--IsCustom}}
+    {{> @partial-block}}
+  {{else}}
+    <li>
+      {{#if dropdown--HasItemIcons}}
+        {{#> dropdown-menu-item dropdown-menu-item--type="a" dropdown-menu-item--modifier="pf-m-icon" dropdown-menu-item--attribute='href="#"'}}
+          {{#> dropdown-menu-item-icon}}
+            <img src="/assets/images/pf-logo-small.svg" alt="PatternFly logo">
+          {{/dropdown-menu-item-icon}}
+          Link
+        {{/dropdown-menu-item}}
+      {{else}}
+        {{#> dropdown-menu-item dropdown-menu-item--type="a" dropdown-menu-item--attribute='href="#"'}}
+          Link
+        {{/dropdown-menu-item}}
+      {{/if}}
+    </li>
+    <li>
+      {{#if dropdown--HasItemIcons}}
+        {{#> dropdown-menu-item dropdown-menu-item--modifier="pf-m-icon"}}
+          {{#> dropdown-menu-item-icon}}
+            <i class="fas fa-cog" aria-hidden="true"></i>
+          {{/dropdown-menu-item-icon}}
+          Action
+        {{/dropdown-menu-item}}
+      {{else}}
+        {{#> dropdown-menu-item}}
+          Action
+        {{/dropdown-menu-item}}
+      {{/if}}
+    </li>
+    <li>
+      {{#> dropdown-menu-item dropdown-menu-item--type="a" dropdown-menu-item--modifier="pf-m-disabled" dropdown-menu-item--attribute='href="#" aria-disabled="true" tabindex="-1"'}}
+        Disabled link
       {{/dropdown-menu-item}}
-    {{else}}
+    </li>
+    <li>
+      {{#> dropdown-menu-item dropdown-menu-item--attribute='disabled'}}
+        Disabled action
+      {{/dropdown-menu-item}}
+    </li>
+    {{#> dropdown-separator}}{{/dropdown-separator}}
+    <li>
       {{#> dropdown-menu-item dropdown-menu-item--type="a" dropdown-menu-item--attribute='href="#"'}}
-        Link
+        Separated link
       {{/dropdown-menu-item}}
-    {{/if}}
-  </li>
-  <li>
-    {{#if dropdown--HasItemIcons}}
-      {{#> dropdown-menu-item dropdown-menu-item--modifier="pf-m-icon"}}
-        {{#> dropdown-menu-item-icon}}
-          <i class="fas fa-cog" aria-hidden="true"></i>
-        {{/dropdown-menu-item-icon}}
-        Action
-      {{/dropdown-menu-item}}
-    {{else}}
-      {{#> dropdown-menu-item}}
-        Action
-      {{/dropdown-menu-item}}
-    {{/if}}
-  </li>
-  <li>
-    {{#> dropdown-menu-item dropdown-menu-item--type="a" dropdown-menu-item--modifier="pf-m-disabled" dropdown-menu-item--attribute='href="#" aria-disabled="true" tabindex="-1"'}}
-      Disabled link
-    {{/dropdown-menu-item}}
-  </li>
-  <li>
-    {{#> dropdown-menu-item dropdown-menu-item--attribute='disabled'}}
-      Disabled action
-    {{/dropdown-menu-item}}
-  </li>
-  {{#> dropdown-separator}}{{/dropdown-separator}}
-  <li>
-    {{#> dropdown-menu-item dropdown-menu-item--type="a" dropdown-menu-item--attribute='href="#"'}}
-      Separated link
-    {{/dropdown-menu-item}}
-  </li>
+    </li>
+  {{/if}}
 </ul>

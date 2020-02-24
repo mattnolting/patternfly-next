@@ -3,55 +3,64 @@ title: Page
 section: demos
 ---
 
+import './Page.css'
+
 ## Demos
 
-## Header-update
-```hbs title=Header-update-collapsed
-{{#> page page--id=header-update-collapsed--id}}
-  {{#> skip-to-content skip-to-content--attribute=(concat 'href="#main-content-' page--id '"')}}
-    Skip to content
-  {{/skip-to-content}}
-  {{#> page-header}}
-    {{!-- Brand --}}
-    {{#> page-header-brand}}
-      {{#> page-header-brand-toggle}}
-        {{#> button button--modifier="pf-m-plain" button--attribute=(concat 'id="' page--id '-nav-toggle" aria-label="Global navigation" aria-expanded="true" aria-controls="' page--id '-primary-nav"')}}
-          <i class="fas fa-bars" aria-hidden="true"></i>
-        {{/button}}
-      {{/page-header-brand-toggle}}
-      {{#> page-header-brand-link page-header-brand-link--href="#"}}
-        {{#> brand brand--attribute='src="/assets/images/PF-Masthead-Logo.svg" alt="PatternFly logo"'}}{{/brand}}
-      {{/page-header-brand-link}}
-    {{/page-header-brand}}
-    {{#> page-template-header-tools-elements-update}}
-    {{/page-template-header-tools-elements-update}}
-  {{/page-header}}
+## header-update-mobile-portrait-example
+```hbs title=Header-update-mobile-portrait-example
+{{#> page page--id="header-update-mobile-portrait-example"}}
+  {{> page-demo-header-update
+    page-demo-header-update--overflow-menu--IsActive="true"
+    page-demo-header-update--IsMobile="true"
+    }}
 {{/page}}
 ```
 
-```hbs title=Header-update
-{{#> page page--id=header-update--id}}
-  {{#> skip-to-content skip-to-content--attribute=(concat 'href="#main-content-' page--id '"')}}
-    Skip to content
-  {{/skip-to-content}}
-  {{#> page-header}}
-    {{!-- Brand --}}
-    {{#> page-header-brand}}
-      {{#> page-header-brand-toggle}}
-        {{#> button button--modifier="pf-m-plain" button--attribute=(concat 'id="' page--id '-nav-toggle" aria-label="Global navigation" aria-expanded="true" aria-controls="' page--id '-primary-nav"')}}
-          <i class="fas fa-bars" aria-hidden="true"></i>
-        {{/button}}
-      {{/page-header-brand-toggle}}
-      {{#> page-header-brand-link page-header-brand-link--href="#"}}
-        {{#> brand brand--attribute='src="/assets/images/PF-Masthead-Logo.svg" alt="PatternFly logo"'}}{{/brand}}
-      {{/page-header-brand-link}}
-    {{/page-header-brand}}
-    {{#> page-template-header-tools-elements-update dropdown--IsExpanded="true" page-template-header-tools-elements-update--IsMobile="true"}}
-    {{/page-template-header-tools-elements-update}}
-  {{/page-header}}
+## header-update-mobile-landscape-example
+```hbs title=Header-update-mobile-landscape-example
+{{#> page page--id="header-update-mobile-landscape-example"}}
+  {{> page-demo-header-update
+    page-demo-header-update--overflow-menu--IsActive="true"
+    page-demo-header-update--IsMobile="true"
+    dropdown--IsExpanded="true"
+    button--modifier="pf-m-selected "
+    }}
 {{/page}}
 ```
-<!-- {{#> page-template-header-tools-elements-update page-template-header-tools-elements-update--IsCollapsed="true"}} -->
+
+## header-update-tablet-example
+```hbs title=Header-update-tablet-example
+{{#> page page--id="header-update-tablet-example"}}
+  {{> page-demo-header-update
+    page-demo-header-update--overflow-menu--IsActive="true"
+    page-demo-header-update--IsTablet="true"
+    }}
+{{/page}}
+```
+
+## header-update-desktop-example
+```hbs title=Header-update-desktop-example
+{{#> page page--id="header-update-desktop-example"}}
+  {{> page-demo-header-update}}
+{{/page}}
+```
+
+<!-- ## Header-update-desktop-context-selector-example
+```hbs title=Header-update-desktop-context-selector-example
+{{#> page page--id="header-update-desktop-context-selector-example"}}
+  {{> page-demo-header-update
+    page-demo-header-update--HasContextSelectorProject="true"
+    page-demo-header-update--HasContextSelectorApplication="true"
+    }}
+{{/page}}
+``` -->
+
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ```hbs title=Default-nav isFullscreen
 {{> page-demo-default page-demo-default--id="page-default-nav-example" page-sidebar--modifier="pf-m-dark" nav--modifier="pf-m-dark"}}

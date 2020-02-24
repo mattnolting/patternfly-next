@@ -577,6 +577,8 @@ As the data toolbar component is a hybrid layout and component, some of its elem
 | `.pf-m-align-right{-on-[breakpoint]}` | `.pf-c-data-toolbar > *` | Modifies toolbar element to align right, at optional breakpoint. |
 | `.pf-m-align-left{-on-[breakpoint]}` | `.pf-c-data-toolbar > *` | Modifies toolbar element to align left, at optional breakpoint. |
 | `.pf-m-label` | `.pf-c-data-toolbar__item` | Modifies toolbar item to label. |
+| `.pf-m-nowrap{-on-[breakpoint]}` | `.pf-c-data-toolbar__content-section`, `.pf-c-data-toolbar__group` | Modifies the flex layout flex-wrap property to nowrap. |
+| `.pf-m-wrap{-on-[breakpoint]}` | `.pf-c-data-toolbar__content-section`, `.pf-c-data-toolbar__group` | Modifies the flex layout flex-wrap property to wrap. |
 | `.pf-m-chip-container` | `.pf-c-data-toolbar__content`, `.pf-c-data-toolbar__group` | Modifies the data toolbar element for applied filters layout. |
 | `.pf-m-expanded` | `.pf-c-data-toolbar__expandable-content`, `.pf-c-data-toolbar__toggle` | Modifies the component for the expanded state. |
 
