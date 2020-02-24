@@ -24,6 +24,10 @@ $pf-l-flex--variable-map: build-variable-map("pf-l-flex--spacer", $pf-l-flex--sp
   &:last-child {
     --pf-l-flex--spacer: 0;
   }
+
+  > .pf-c-divider.pf-m-vertical {
+    --pf-c-divider--m-vertical--MarginRight: var(--pf-l-flex--spacer);
+  }
 }
 
 // stylelint-disable no-duplicate-selectors, max-nesting-depth
