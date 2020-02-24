@@ -104,18 +104,15 @@
   }
 }
 
-.pf-c-card__head,
-.pf-c-card__header,
-.pf-c-card__body,
-.pf-c-card__footer {
-  padding-top: var(--pf-c-card--child--PaddingTop);
-  padding-right: var(--pf-c-card--child--PaddingRight);
-  padding-bottom: var(--pf-c-card--child--PaddingBottom);
-  padding-left: var(--pf-c-card--child--PaddingLeft);
-
-  & + & {
-    --pf-c-card--child--PaddingTop: 0;
-  }
+.pf-c-card__head + .pf-c-card__head,
+.pf-c-card__head + .pf-c-card__header,
+.pf-c-card__head + .pf-c-card__body,
+.pf-c-card__head + .pf-c-card__footer,
+.pf-c-card__header + .pf-c-card__body,
+.pf-c-card__header + .pf-c-card__footer,
+.pf-c-card__body + .pf-c-card__body,
+.pf-c-card__body + .pf-c-card__footer {
+  --pf-c-card--child--PaddingTop: 0;
 }
 
 .pf-c-card__head,
