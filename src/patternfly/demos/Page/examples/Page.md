@@ -42,7 +42,21 @@ import './Page.css'
 ## header-update-desktop-example
 ```hbs title=Header-update-desktop-example
 {{#> page page--id="header-update-desktop-example"}}
-  {{> page-demo-header-update}}
+  {{> page-demo-header-update
+    app-launcher--IsExpanded="true"
+    app-launcher-toggle--modifier="pf-m-selected"
+    }}
+{{/page}}
+```
+
+## everthing-open-example
+```hbs title=Everything-open-example
+{{#> page page--id="everything-open-example"}}
+  {{> page-demo-header-update
+    page-header-notification-button--modifier="pf-m-selected"
+    app-launcher--IsExpanded="true"
+    app-launcher-toggle--modifier="pf-m-selected"
+    }}
 {{/page}}
 ```
 

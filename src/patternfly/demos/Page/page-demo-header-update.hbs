@@ -41,7 +41,10 @@
                   {{#> overflow-menu-content}}
                     {{#> overflow-menu-group overflow-menu-group--modifier="pf-m-icon-button-group"}}
                       {{#> overflow-menu-item}}
-                        {{#> button button--modifier="pf-m-plain" button--attribute='aria-label="Unread notifications"'}}
+                        {{#> button
+                          button--modifier=(concat page-header-notification-button--modifier ' pf-m-plain')
+                          button--attribute='aria-label="Unread notifications"'
+                          }}
                           {{#> notification-badge notification-badge--modifier="pf-m-unread"}}
                             <i class="fas fa-bell" aria-hidden="true"></i>
                           {{/notification-badge}}
@@ -50,10 +53,10 @@
                       {{#unless page-demo-header-update--IsMobile}}
                       {{#unless page-demo-header-update--IsTablet}}
                         {{#> overflow-menu-item}}
-                          {{#> app-launcher id=(concat page--id '-app-launcher') app-launcher--IsExpandedss="true"}}
+                          {{#> app-launcher id=(concat page--id '-app-launcher') app-launcher--IsExpanded="true"}}
                             {{#> app-launcher-menu app-launcher-menu--modifier="pf-m-align-right"}}
-                              <li>{{#> app-launcher-menu-item app-launcher-menu-item--attribute='href="#"'}}Link{{/app-launcher-menu-item}}</li>
-                              <li>{{#> app-launcher-menu-item app-launcher-menu-item--attribute='href="#"'}}Link 2{{/app-launcher-menu-item}}</li>
+                              <li>{{#> app-launcher-menu-item app-launcher-menu-item--attribute='href="#"'}}Openshift{{/app-launcher-menu-item}}</li>
+                              <li>{{#> app-launcher-menu-item app-launcher-menu-item--attribute='href="#"'}}Insights{{/app-launcher-menu-item}}</li>
                             {{/app-launcher-menu}}
                           {{/app-launcher}}
                         {{/overflow-menu-item}}
@@ -66,13 +69,22 @@
                           {{#> dropdown
                             id="dropdown-kebab-expanded"
                             dropdown--IsActionMenu="true"
-                            dropdown--IsExpanded="true"
-                            dropdown-toggle--modifier="pf-m-plain"
+                            dropdown-toggle--modifier="pf-m-plain pf-m-selected"
                             dropdown-menu--modifier="pf-m-align-right"
-                            aria-label="Actions"
+                            aria-label="Settings"
+                            dropdown--IsCustom="true"
                             }}
+
+                            {{#> dropdown-toggle-button}}
                               <i class="fas fa-cog" aria-hidden="true"></i>
+                            {{/dropdown-toggle-button}}
+                            {{#> dropdown-menu}}
+                              {{#> dropdown-menu-item}}test
+                              {{/dropdown-menu-item}}
+                            {{/dropdown-menu}}
                           {{/dropdown}}
+
+
                         {{/overflow-menu-item}}
                       {{/unless}}
                       {{/unless}}

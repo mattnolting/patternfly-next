@@ -301,7 +301,10 @@
     }
   }
 
-  .pf-c-button {
+  .pf-c-button,
+  .pf-c-dropdown__toggle,
+  .pf-c-options-menu__toggle,
+  .pf-c-app-launcher__toggle {
     &.pf-m-selected {
       &::before {
         position: absolute;
@@ -314,7 +317,15 @@
         border-radius: var(--pf-c-page__header-tools--c-button--m-selected--before--BorderRadius);
         transform: translateX(-50%);
       }
+    }
 
+    > * {
+      position: relative;
+    }
+  }
+
+  .pf-c-button {
+    &.pf-m-selected {
       // stylelint-disable
       .pf-c-notification-badge {
         &.pf-m-unread {
@@ -324,10 +335,6 @@
         }
       }
       // stylelint-enable
-    }
-
-    > * {
-      position: relative;
     }
   }
 
