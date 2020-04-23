@@ -323,11 +323,16 @@
       left: 0;
       content: "";
       border: 0;
-      border-left: var(--pf-c-table--tbody--after--BorderLeftWidth) solid var(--pf-c-table--tbody--after--BorderColor);
+      border-left: var(--pf-c-table--tbody--after--BorderColor) solid  var(--pf-c-table--tbody--after--BorderLeftWidth);
     }
 
     &.pf-m-expanded {
       --pf-c-table--tbody--after--BorderLeftWidth: var(--pf-c-table--tbody--after--BorderWidth);
+
+      // disable nested tbody border
+      .pf-c-table {
+        --pf-c-table--tbody--after--BorderLeftWidth: 0;
+      }
     }
 
     > tr > * {
