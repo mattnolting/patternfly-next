@@ -349,6 +349,7 @@ The CSS approach, by keeping specificity low on base class properties and resett
   {{/l-flex}}
 {{/l-flex}}
 ```
+
 ### Usage
 | Class | Applied to | Outcome |
 | -- | -- | -- |
@@ -621,7 +622,6 @@ The CSS approach, by keeping specificity low on base class properties and resett
 | `.pf-m-align-self-flex-baseline{-on-[breakpoint]}` | `.pf-l-flex > .pf-l-flex`, `.pf-l-flex__item` | Modifies align-self property to baseline. |
 | `.pf-m-align-self-flex-stretch{-on-[breakpoint]}` | `.pf-l-flex > .pf-l-flex`, `.pf-l-flex__item` | Modifies align-self property to stretch. |
 
-
 ### Justification
 ```hbs
 <h3>Justify content with <code>.pf-m-justify-content-flex-end</code>.</h3>
@@ -669,97 +669,101 @@ The CSS approach, by keeping specificity low on base class properties and resett
 
 ### Ordering
 
-Ordering - `.pf-m-order-[1,12]{-on-[breakpoint]}`. Ordering can be applied to nested <code>.pf-l-flex</code> and <code>.pf-l-flex__item</code>s. Spacing may need to be managed based on how items are ordered.
+Ordering - Ordering can be applied to nested <code>.pf-l-flex</code> and <code>.pf-l-flex__item</code>s. Spacing may need to be managed based on how items are ordered. Because order could apply to an innumerable number of elements, order is set inline as `--pf-l-flex--item--Order{-on-[breakpoint]}: {int}`.
 
-```hbs title=First-last-ordering
+### First-last-ordering
+```hbs
 {{#> l-flex}}
-  {{#> l-flex-item l-flex-item--modifier="pf-m-order-last pf-m-spacer-none"}}
-    Last item
+  {{#> l-flex-item l-flex-item--modifier="pf-m-spacer-none" l-flex-item--attribute='style="--pf-l-flex--item--Order: 2;"'}}
+    Item A
   {{/l-flex-item}}
   {{#> l-flex-item}}
-    Flex item
+    Item B
   {{/l-flex-item}}
-  {{#> l-flex-item l-flex-item--modifier="pf-m-order-first pf-m-spacer-md"}}
-    First item
+  {{#> l-flex-item l-flex-item--modifier="pf-m-spacer-md" l-flex-item--attribute='style="--pf-l-flex--item--Order: -1;"'}}
+    Item C
   {{/l-flex-item}}
 {{/l-flex}}
 ```
 
-```hbs title=Responsive-first-last-ordering
+### Responsive-first-last-ordering
+```hbs
 {{#> l-flex}}
-  {{#> l-flex-item l-flex-item--modifier="pf-m-order-last-on-lg pf-m-spacer-none-on-lg"}}
-    Last item
+  {{#> l-flex-item l-flex-item--modifier="pf-m-spacer-none-on-lg" l-flex-item--attribute='style="--pf-l-flex--item--Order-on-lg: 2;"'}}
+    Item A
   {{/l-flex-item}}
-  {{#> l-flex-item}}
-    Flex item
+  {{#> l-flex-item l-flex-item--modifier="pf-m-spacer-none-on-md pf-m-spacer-md-on-lg" l-flex-item--attribute='style="--pf-l-flex--item--Order: -1; --pf-l-flex--item--Order-on-md: 1;"'}}
+    Item B
   {{/l-flex-item}}
-  {{#> l-flex-item l-flex-item--modifier="pf-m-order-first-on-lg pf-m-spacer-md-on-lg"}}
-    First item
+  {{#> l-flex-item l-flex-item--modifier="pf-m-spacer-md" l-flex-item--attribute='style="--pf-l-flex--item--Order-on-md: -1;"'}}
+    Item C
   {{/l-flex-item}}
 {{/l-flex}}
 ```
 
-```hbs title=Ordering
+### Ordering
+```hbs
 {{#> l-flex}}
-  {{#> l-flex l-flex--modifier="pf-m-order-2 pf-m-spacer-none"}}
-    {{#> l-flex-item l-flex-item--modifier="pf-m-order-4 pf-m-spacer-none"}}
-      Set 1, Order 4
+  {{#> l-flex l-flex--modifier="pf-m-spacer-none" l-flex--attribute='style="--pf-l-flex--item--Order: 1;"'}}
+    {{#> l-flex-item l-flex-item--modifier="pf-m-spacer-none" l-flex-item--attribute='style="--pf-l-flex--item--Order: 3;"'}}
+      Set 1, Item A
     {{/l-flex-item}}
-    {{#> l-flex-item l-flex-item--modifier="pf-m-order-2"}}
-      Set 1, Order 2
+    {{#> l-flex-item l-flex-item--attribute='style="--pf-l-flex--item--Order: 1;"'}}
+      Set 1, Item B
     {{/l-flex-item}}
-    {{#> l-flex-item l-flex-item--modifier="pf-m-order-1"}}
-      Set 1, Order 1
+    {{#> l-flex-item}}
+      Set 1, Item C
     {{/l-flex-item}}
-    {{#> l-flex-item l-flex-item--modifier="pf-m-order-3 pf-m-spacer-md"}}
-      Set 1, Order 3
+    {{#> l-flex-item l-flex-item--modifier="pf-m-order-2 pf-m-spacer-md"}}
+      Set 1, Item D
     {{/l-flex-item}}
   {{/l-flex}}
   {{#> l-flex l-flex--modifier="pf-m-spacer-md"}}
-    {{#> l-flex-item l-flex-item--modifier="pf-m-order-4 pf-m-spacer-none"}}
-      Set 2, Order 4
+    {{#> l-flex-item l-flex-item--modifier="pf-m-spacer-none" l-flex-item--attribute='style="--pf-l-flex--item--Order: 3;"'}}
+      Set 2, Item A
     {{/l-flex-item}}
-    {{#> l-flex-item l-flex-item--modifier="pf-m-order-2"}}
-      Set 2, Order 2
+    {{#> l-flex-item l-flex-item--attribute='style="--pf-l-flex--item--Order-on-lg: 1;"'}}
+      Set 2, Item B
     {{/l-flex-item}}
-    {{#> l-flex-item l-flex-item--modifier="pf-m-order-1"}}
-      Set 2, Order 1
+    {{#> l-flex-item}}
+      Set 2, Item C
     {{/l-flex-item}}
-    {{#> l-flex-item l-flex-item--modifier="pf-m-order-3 pf-m-spacer-md"}}
-      Set 2, Order 3
+    {{#> l-flex-item l-flex-item--modifier="pf-m-spacer-md" l-flex-item--attribute='style="--pf-l-flex--item--Order: 2;"'}}
+      Set 2, Item D
     {{/l-flex-item}}
   {{/l-flex}}
 {{/l-flex}}
 ```
 
-```hbs title=Responsive-ordering
+### Responsive-ordering
+```hbs
 {{#> l-flex}}
-  {{#> l-flex l-flex--modifier="pf-m-order-2-on-lg pf-m-spacer-none"}}
-    {{#> l-flex-item l-flex-item--modifier="pf-m-order-4-on-md pf-m-spacer-none-on-md"}}
-      Set 1, Order 4
+  {{#> l-flex l-flex--modifier="pf-m-spacer-none" l-flex--attribute='style="--pf-l-flex--item--Order-on-lg: 1;"'}}
+    {{#> l-flex-item l-flex-item--attribute='style="--pf-l-flex--item--Order-on-md: 2;"'}}
+      Set 1, Item A
     {{/l-flex-item}}
-    {{#> l-flex-item l-flex-item--modifier="pf-m-order-2-on-md"}}
-      Set 1, Order 2
+    {{#> l-flex-item l-flex-item--attribute='style="--pf-l-flex--item--Order-on-md: -1;"'}}
+      Set 1, Item B
     {{/l-flex-item}}
-    {{#> l-flex-item l-flex-item--modifier="pf-m-order-1-on-xl"}}
-      Set 1, Order 1
+    {{#> l-flex-item l-flex-item--attribute='style="--pf-l-flex--item--Order-on-xl: 1;"'}}
+      Set 1, Item C
     {{/l-flex-item}}
-    {{#> l-flex-item l-flex-item--modifier="pf-m-order-3-on-xl pf-m-spacer-md-on-md"}}
-      Set 1, Order 3
+    {{#> l-flex-item l-flex-item--modifier="pf-m-spacer-none-on-xl" l-flex-item--attribute='style="--pf-l-flex--item--Order-on-xl: 2;"'}}
+      Set 1, Item D
     {{/l-flex-item}}
   {{/l-flex}}
   {{#> l-flex l-flex--modifier="pf-m-spacer-md-on-lg"}}
-    {{#> l-flex-item l-flex-item--modifier="pf-m-order-4 pf-m-spacer-none"}}
-      Set 2, Order 4
+    {{#> l-flex-item l-flex-item--modifier="pf-m-spacer-none" l-flex-item--attribute='style="--pf-l-flex--item--Order: 3;"'}}
+      Set 2, Item A
     {{/l-flex-item}}
-    {{#> l-flex-item l-flex-item--modifier="pf-m-order-2"}}
-      Set 2, Order 2
+    {{#> l-flex-item l-flex-item--attribute='style="--pf-l-flex--item--Order: 1;"'}}
+      Set 2, Item B
     {{/l-flex-item}}
-    {{#> l-flex-item l-flex-item--modifier="pf-m-order-1"}}
-      Set 2, Order 1
+    {{#> l-flex-item}}
+      Set 2, Item C
     {{/l-flex-item}}
-    {{#> l-flex-item l-flex-item--modifier="pf-m-order-3 pf-m-spacer-md"}}
-      Set 2, Order 3
+    {{#> l-flex-item l-flex-item--modifier="pf-m-spacer-md" l-flex-item--attribute='style="--pf-l-flex--item--Order: 2;"'}}
+      Set 2, Item D
     {{/l-flex-item}}
   {{/l-flex}}
 {{/l-flex}}
@@ -816,9 +820,7 @@ Ordering - `.pf-m-order-[1,12]{-on-[breakpoint]}`. Ordering can be applied to ne
 | `.pf-m-align-content-space-around{-on-[breakpoint]}` | `.pf-l-flex` | Modifies the flex layout align-content property to space-around. |
 | `.pf-m-align-left{-on-[breakpoint]}` | `.pf-l-flex > .pf-l-flex`, `.pf-l-flex__item` | Resets the flex layout element margin-left property to 0. |
 | `.pf-m-align-right{-on-[breakpoint]}` | `.pf-l-flex > .pf-l-flex`, `.pf-l-flex__item` | Modifies the flex layout element margin-left property to auto. |
-| `.pf-m-order[0-12]{-on-[breakpoint]}` | `.pf-l-flex > .pf-l-flex`, `.pf-l-flex__item` | Modifies the order of the flex layout element. |
-| `.pf-m-order-first{-on-[breakpoint]}` | `.pf-l-flex > .pf-l-flex`, `.pf-l-flex__item` | Modifies the order of the flex layout element to -1. |
-| `.pf-m-order-last{-on-[breakpoint]}` | `.pf-l-flex > .pf-l-flex`, `.pf-l-flex__item` | Modifies the order of the flex layout element to $limit + 1. |
+| `--pf-l-flex--item--Order{-on-[breakpoint]}: {order}` | `.pf-l-flex > .pf-l-flex`, `.pf-l-flex__item` | Modifies the flex layout element order property. |
 
 ### Spacer system
 

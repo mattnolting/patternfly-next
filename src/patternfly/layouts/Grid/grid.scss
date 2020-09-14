@@ -5,8 +5,6 @@ $pf-l-grid--breakpoint-map: build-breakpoint-map();
   --pf-l-grid--m-gutter--GridGap: var(--pf-global--gutter);
   --pf-l-grid__item--GridColumnStart: auto;
   --pf-l-grid__item--GridColumnEnd: span 12;
-  --pf-l-grid--Order--base: 0;
-  --pf-l-grid--Order: var(--pf-l-grid--Order--base);
 
   display: grid;
   grid-template-columns: repeat(12, [col-start] 1fr);
@@ -14,11 +12,9 @@ $pf-l-grid--breakpoint-map: build-breakpoint-map();
 
   > *,
   .pf-l-grid__item {
-    --pf-l-grid--Order: var(--pf-l-grid--Order--base);
-
     grid-column-start: var(--pf-l-grid__item--GridColumnStart);
     grid-column-end: var(--pf-l-grid__item--GridColumnEnd);
-    order: var(--pf-l-grid--Order);
+    order: var(--pf-l-grid--item--Order);
     min-width: 0;
     min-height: 0;
   }
@@ -61,5 +57,35 @@ $pf-l-grid--breakpoint-map: build-breakpoint-map();
 
   &.pf-m-gutter {
     grid-gap: var(--pf-l-grid--m-gutter--GridGap);
+  }
+}
+
+// Item
+.pf-l-grid > * {
+  order: var(--pf-l-grid--item--Order);
+
+  // don't set base value for --pf-l-grid--item--Order as it defaults to 0
+  @media screen and (min-width: $pf-global--breakpoint--sm) {
+    order: var(--pf-l-grid--item--Order-on-sm, var(--pf-l-grid--item--Order));
+  }
+
+  @media screen and (min-width: $pf-global--breakpoint--md) {
+    order: var(--pf-l-grid--item--Order-on-md, var(--pf-l-grid--item--Order-on-sm, var(--pf-l-grid--item--Order)));
+  }
+
+  @media screen and (min-width: $pf-global--breakpoint--lg) {
+    order: var(--pf-l-grid--item--Order-on-lg, var(--pf-l-grid--item--Order-on-md, var(--pf-l-grid--item--Order-on-sm, var(--pf-l-grid--item--Order))));
+  }
+
+  @media screen and (min-width: $pf-global--breakpoint--xl) {
+    order: var(--pf-l-grid--item--Order-on-xl, var(--pf-l-grid--item--Order-on-lg, var(--pf-l-grid--item--Order-on-md, var(--pf-l-grid--item--Order-on-sm, var(--pf-l-grid--item--Order)))));
+  }
+
+  @media screen and (min-width: $pf-global--breakpoint--2xl) {
+    order: var(--pf-l-grid--item--Order-on-2xl, var(--pf-l-grid--item--Order-on-xl, var(--pf-l-grid--item--Order-on-lg, var(--pf-l-grid--item--Order-on-md, var(--pf-l-grid--item--Order-on-sm, var(--pf-l-grid--item--Order))))));
+  }
+
+  &:last-child {
+    --pf-l-flex--spacer: 0;
   }
 }
